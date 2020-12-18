@@ -37,38 +37,13 @@ function notifyerror(time, message)
 	})
 end
 
-addcmd("fly", "")
-addcmd("unfly", "")
-addcmd("flyspeed", "number")
-addcmd("cmds", "")
-addcmd("noclip","")
-addcmd("clip","")
-addcmd("bang", ", number (optional)")
-addcmd("kill", "player")
-
 function sub(text, numberofletters)
-	return text:sub(0,tonumber(numberofletters))
+	if text:sub(numberofletters+1, numberofletters+1) == " " or text:sub(numberofletters+1, numberofletters+1) == "" then
+		return text:sub(0,tonumber(numberofletters))
+	else
+		return ""
+	end
 end
-
-function runcmd(cmd)
-	if sub(cmd,3) == "fly" then
-		fly()
-	elseif sub(cmd,5) == "unfly" then
-		unfly()
-	elseif sub(cmd,5) == "noclip" then
-		noclip()
-	elseif sub(cmd,4) == "clip" then
-		clip()
-	elseif sub(cmd,4) == "cmds" then
-		notify(5, "Type /console in chat or open the developer console to view the commands")
-		local printie = "\n"
-		for i,v in pairs(commands.cmdview) do
-			printie = printie.. v.. "\n"
-		end
-		print(printie)
-	end ----------- END OF COMMANDS
-end
-
 
 local maxflyspeed = 2*2
 local flyspeed = maxflyspeed/2
@@ -326,8 +301,38 @@ adminthing.FocusLost:Connect(function(enterpressed)
 		runcmd(adminthing.Text)
 	end
 end)
+-------------------------------------------------------------------------------------------
+addcmd("fly", "")--D
+addcmd("unfly", "")--D
+addcmd("flyspeed", "number")
+addcmd("cmds", "")
+addcmd("noclip","")
+addcmd("clip","")
+addcmd("bang", ", number (optional)")
+addcmd("kill", "player")
 
-
+function runcmd(cmd)
+	cmd = tostring(cmd)
+	if sub(cmd,3) == "fly" then
+		fly()
+	elseif sub(cmd,5) == "unfly" then
+		unfly()
+	elseif sub(cmd,8) == "flyspeed" then
+		local number = tonumber(cmd:sub(10))
+		setspeedfly(number)
+	elseif sub(cmd,5) == "noclip" then
+		noclip()
+	elseif sub(cmd,4) == "clip" then
+		clip()
+	elseif sub(cmd,4) == "cmds" then
+		notify(5, "Type /console in chat or open the developer console to view the commands")
+		local printie = "\n"
+		for i,v in pairs(commands.cmdview) do
+			printie = printie.. v.. "\n"
+		end
+		print(printie)
+	end ----------- END OF COMMANDS
+end
 
 
 
