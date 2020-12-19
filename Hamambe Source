@@ -45,6 +45,14 @@ function sub(text, numberofletters)
 	end
 end
 
+function tablefind(table, string)
+	for i,v in pairs(table) do
+		if v == string then
+			return i
+		end
+	end
+end
+
 local maxflyspeed = 2*2
 local flyspeed = maxflyspeed/2
 local flying = false
@@ -75,7 +83,7 @@ function fly()
 			end)
 			velocity.Velocity = Vector3.new(0,0,0)
 			local fli = uis.InputBegan:Connect(function(key)
-				if not table.find(keys,uis:GetStringForKeyCode(key.KeyCode)) then
+				if not tablefind(keys,uis:GetStringForKeyCode(key.KeyCode)) then
 					keys[#keys+1] = uis:GetStringForKeyCode(key.KeyCode)
 				end
 				if key.KeyCode == Enum.KeyCode.W and focusedcheck == "" then
@@ -83,14 +91,14 @@ function fly()
 						gyro.CFrame = game.Workspace.Camera.CFrame
 						local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 16
 						local cameray = game.Workspace.Camera.CFrame.LookVector.Y*16
-						if table.find(keys,"S") or table.find(keys,"Q") or table.find(keys,'E') then
-							if table.find(keys,"Q") then
+						if tablefind(keys,"S") or tablefind(keys,"Q") or tablefind(keys,'E') then
+							if tablefind(keys,"Q") then
 								cameray = -16
-							elseif table.find(keys,"E") then
+							elseif tablefind(keys,"E") then
 								cameray = 16
 							else
 								velocity.Velocity = Vector3.new(0,0,0)
-								repeat pause() until not table.find(keys,"S") and not table.find(keys,"Q") and not table.find(keys,'E')
+								repeat pause() until not tablefind(keys,"S") and not tablefind(keys,"Q") and not tablefind(keys,'E')
 							end
 						end
 						direction = Vector3.new(direction.X,cameray,direction.Z)
@@ -105,14 +113,14 @@ function fly()
 						gyro.CFrame = game.Workspace.Camera.CFrame
 						local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 16
 						local cameray = -(game.Workspace.Camera.CFrame.LookVector.Y*16)
-						if table.find(keys,"W") or table.find(keys,"Q") or table.find(keys,'E') then
-							if table.find(keys,"Q") then
+						if tablefind(keys,"W") or tablefind(keys,"Q") or tablefind(keys,'E') then
+							if tablefind(keys,"Q") then
 								cameray = -16
-							elseif table.find(keys,"E") then
+							elseif tablefind(keys,"E") then
 								cameray = 16
 							else
 								velocity.Velocity = Vector3.new(0,0,0)
-								repeat pause() until not table.find(keys,"W") and not table.find(keys,"Q") and not table.find(keys,'E')
+								repeat pause() until not tablefind(keys,"W") and not tablefind(keys,"Q") and not tablefind(keys,'E')
 
 							end
 						end
@@ -139,7 +147,7 @@ function fly()
 						gyro.CFrame = game.Workspace.Camera.CFrame
 						local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 0
 						local cameray = 16
-						if table.find(keys,'Q') then
+						if tablefind(keys,'Q') then
 							cameray = 0
 						end
 						direction = Vector3.new(direction.X,cameray,direction.Z)
@@ -153,7 +161,7 @@ function fly()
 						gyro.CFrame = game.Workspace.Camera.CFrame
 						local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 0
 						local cameray = -16
-						if table.find(keys,'E') then
+						if tablefind(keys,'E') then
 							cameray = 0
 						end
 						direction = Vector3.new(direction.X,cameray,direction.Z)
@@ -175,8 +183,8 @@ function fly()
 			end)
 
 			local qwe = uis.InputEnded:Connect(function(key)
-				if table.find(keys,uis:GetStringForKeyCode(key.KeyCode)) then
-					local number = table.find(keys,uis:GetStringForKeyCode(key.KeyCode))
+				if tablefind(keys,uis:GetStringForKeyCode(key.KeyCode)) then
+					local number = tablefind(keys,uis:GetStringForKeyCode(key.KeyCode))
 					table.remove(keys,number)
 				end
 			end)
