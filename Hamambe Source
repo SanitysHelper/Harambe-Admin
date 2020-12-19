@@ -1,3 +1,7 @@
+local lp = game.Players.LocalPlayer
+
+
+
 local commands = {
 	name = {};
 	howtouse = {};
@@ -49,6 +53,37 @@ function tablefind(table, string)
 	for i,v in pairs(table) do
 		if v == string then
 			return i
+		end
+	end
+end
+
+function split(text, splitter)
+	text = text..splitter
+	local returning = {}
+	local returningtxt = ""
+	for i = 1,#text do
+		if text:sub(i,i) ~= splitter then
+			returningtxt = returningtxt..text:sub(i,i)
+		else
+			returning[#returning+1] = returningtxt
+			returningtxt = ""
+		end
+	end
+	return returning
+end
+
+function getplayer(plr)
+	plr = plr:lower()
+	if game.Players:FindFirstChild(plr) then
+		return game.Players:FindFirstChild(plr)
+	elseif plr:lower() == "random" then
+		return game.Players:GetPlayers()[math.random(1,#game.Players:GetPlayers())]
+		
+	else
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name:lower():match(plr) then
+				return(v)
+			end
 		end
 	end
 end
@@ -273,11 +308,11 @@ else
 end
 
 Frame.Parent = HarambeAdmin
-Frame.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
 Frame.Position = UDim2.new(0.435876518, 0, 0.480089098, 0)
 Frame.Size = UDim2.new(0.110638298, 10, 0.0450450443, 0)
-
+Frame.BackgroundTransparency = 0.2
 
 
 adminthing.Name = "adminthing"
@@ -295,16 +330,45 @@ adminthing.TextColor3 = Color3.fromRGB(80, 255, 229)
 adminthing.TextScaled = true
 adminthing.TextSize = 14.000
 adminthing.TextWrapped = true
+adminthing.BackgroundTransparency = 0.2
 
 local uis = game:GetService("UserInputService")
+local focused = false
+
+function focus()
+	Frame.BackgroundColor3 = Color3.fromRGB(0,0,0)
+	Frame.BackgroundTransparency = 0.2
+	adminthing.BackgroundTransparency = 0.2
+	adminthing:CaptureFocus()
+	adminthing.TextTransparency = 0
+end
+
+function unfocus()
+	adminthing:ReleaseFocus()
+	Frame.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
+	Frame.BackgroundTransparency = 0.95
+	adminthing.BackgroundTransparency = 0.6
+	adminthing.TextTransparency = 0.6
+end
+unfocus()
+
+uis.TextBoxFocused:Connect(function(thing)
+	focused = true
+end)
+
+uis.TextBoxFocusReleased:Connect(function()
+	focused = false
+end)
+
 uis.InputBegan:Connect(function(key)
-	if key.KeyCode == Enum.KeyCode.Semicolon then
+	if key.KeyCode == Enum.KeyCode.Semicolon and focused == false then
 		pause()
-		adminthing:CaptureFocus()
+		focus()
 	end
 end)
 
 adminthing.FocusLost:Connect(function(enterpressed)
+	unfocus()
 	if enterpressed then
 		runcmd(adminthing.Text)
 	end
@@ -312,33 +376,45 @@ end)
 -------------------------------------------------------------------------------------------
 addcmd("fly", "")--D
 addcmd("unfly", "")--D
-addcmd("flyspeed", "number")
-addcmd("cmds", "")
-addcmd("noclip","")
-addcmd("clip","")
+addcmd("flyspeed", "number")--D
+addcmd("cmds", "")--D
+addcmd("noclip","")--D
+addcmd("clip","")--D
+addcmd("goto","player")
 addcmd("bang", ", number (optional)")
 addcmd("kill", "player")
 
-function runcmd(cmd)
-	cmd = tostring(cmd)
-	if sub(cmd,3) == "fly" then
+function runcmd(command)
+	local args = split(command, " ")
+	local cmd = args[1]
+	if cmd == "fly" then
 		fly()
-	elseif sub(cmd,5) == "unfly" then
+	elseif cmd == "unfly" then
 		unfly()
-	elseif sub(cmd,8) == "flyspeed" then
+	elseif cmd == "flyspeed" then
 		local number = tonumber(cmd:sub(10))
 		setspeedfly(number)
-	elseif sub(cmd,6) == "noclip" then
+	elseif cmd == "noclip" then
 		noclip()
-	elseif sub(cmd,4) == "clip" then
+	elseif cmd == "clip" then
 		clip()
-	elseif sub(cmd,4) == "cmds" then
+	elseif cmd == "cmds" then
 		notify(5, "Type /console in chat or open the developer console to view the commands")
 		local printie = "\n"
 		for i,v in pairs(commands.cmdview) do
 			printie = printie.. v.. "\n"
 		end
 		print(printie)
+	elseif cmd == "goto" then
+		local target = getplayer(args[2])
+		if target then
+			local targetroot = target.Character:FindFirstChild("HumanoidRootPart") or target.Character:FindFirstChild("Torso") or target.Character:FindFirstChild("UpperTorso") or target.Character:FindFirstChild("Head")
+			if targetroot then
+				lp.Character.HumanoidRootPart.CFrame = targetroot.CFrame
+			end
+		else
+			notifyerror(5,"Player isn't in the game.")
+		end
 	end ----------- END OF COMMANDS
 end
 
