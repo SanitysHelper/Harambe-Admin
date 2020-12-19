@@ -328,7 +328,7 @@ function runcmd(cmd)
 	elseif sub(cmd,8) == "flyspeed" then
 		local number = tonumber(cmd:sub(10))
 		setspeedfly(number)
-	elseif sub(cmd,5) == "noclip" then
+	elseif sub(cmd,6) == "noclip" then
 		noclip()
 	elseif sub(cmd,4) == "clip" then
 		clip()
