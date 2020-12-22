@@ -1,510 +1,441 @@
-local lp = game.Players.LocalPlayer
-
-
-
-local commands = {
-	name = {};
-	howtouse = {};
-	code = {};
-	cmdview = {};
-}
-
-function addcmd(command, explain)
-	if explain == "" or explain == nil then
-		explain = "none"
-	end
-	commands.name[#commands.name+1] = tostring(command):lower()
-	commands.howtouse[#commands.howtouse+1] = tostring(explain):lower()
-	commands.cmdview[#commands.cmdview+1] = command..": ".. explain
-end
-
-function pause()
-	game:GetService("RunService").Stepped:Wait()
-end
-
-
-function notify(time, message)
-	game.StarterGui:SetCore("SendNotification", {
-		Title = "Notification"; -- the title (ofc)
-		Text = message; -- what the text says (ofc)
-		Icon = "rbxassetid://4946089592"; -- the image if u want. 
-		Duration = time;
-	})
-end
-
-function notifyerror(time, message)
-	game.StarterGui:SetCore("SendNotification", {
-		Title = "Command Error"; -- the title (ofc)
-		Text = message; -- what the text says (ofc)
-		Icon = "rbxassetid://4946089592"; -- the image if u want. 
-		Duration = time;
-	})
-end
-
-function sub(text, numberofletters)
-	if text:sub(numberofletters+1, numberofletters+1) == " " or text:sub(numberofletters+1, numberofletters+1) == "" then
-		return text:sub(0,tonumber(numberofletters))
-	else
-		return ""
-	end
-end
-
-function tablefind(table, string)
-	for i,v in pairs(table) do
-		if v == string then
-			return i
-		end
-	end
-end
-
-function split(text, splitter)
-	text = text..splitter
-	local returning = {}
-	local returningtxt = ""
-	for i = 1,#text do
-		if text:sub(i,i) ~= splitter then
-			returningtxt = returningtxt..text:sub(i,i)
-		else
-			returning[#returning+1] = returningtxt
-			returningtxt = ""
-		end
-	end
-	return returning
-end
-
-function getplayer(plr)
-	plr = plr:lower()
-	if game.Players:FindFirstChild(plr) then
-		return game.Players:FindFirstChild(plr)
-	elseif plr:lower() == "random" then
-		return game.Players:GetPlayers()[math.random(1,#game.Players:GetPlayers())]
-		
-	else
-		for i,v in pairs(game.Players:GetPlayers()) do
-			if v.Name:lower():match(plr) then
-				return(v)
-			end
-		end
-	end
-end
-
-local maxflyspeed = 2*2
-local flyspeed = maxflyspeed/2
-local flying = false
-
-function fly()
-	if flying == false then
-		spawn(function()
-			notify(2,"You should be flying")
-			flying = true
-			local x = 0
-			local y = 0
-			local z = 0
-			local keys = {}
-			local focusedcheck = ""
-			local status = "none"
-			game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
-			local uis = game:GetService("UserInputService")
-			local velocity = Instance.new("BodyVelocity",game.Players.LocalPlayer.Character.HumanoidRootPart)
-			velocity.MaxForce = Vector3.new('inf','inf','inf')
-			local gyro = Instance.new("BodyGyro",game.Players.LocalPlayer.Character.HumanoidRootPart)
-			gyro.MaxTorque = Vector3.new('inf','inf','inf')
-			gyro.D = 300
-			gyro.P = 9000
-			local focuschecc = uis.TextBoxFocused:Connect(function(thing)
-				focusedcheck = thing.Name
-				uis.TextBoxFocusReleased:Wait()
-				focusedcheck = ""
-			end)
-			velocity.Velocity = Vector3.new(0,0,0)
-			local fli = uis.InputBegan:Connect(function(key)
-				if not tablefind(keys,uis:GetStringForKeyCode(key.KeyCode)) then
-					keys[#keys+1] = uis:GetStringForKeyCode(key.KeyCode)
-				end
-				if key.KeyCode == Enum.KeyCode.W and focusedcheck == "" then
-					while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
-						gyro.CFrame = game.Workspace.Camera.CFrame
-						local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 16
-						local cameray = game.Workspace.Camera.CFrame.LookVector.Y*16
-						if tablefind(keys,"S") or tablefind(keys,"Q") or tablefind(keys,'E') then
-							if tablefind(keys,"Q") then
-								cameray = -16
-							elseif tablefind(keys,"E") then
-								cameray = 16
-							else
-								velocity.Velocity = Vector3.new(0,0,0)
-								repeat pause() until not tablefind(keys,"S") and not tablefind(keys,"Q") and not tablefind(keys,'E')
-							end
-						end
-						direction = Vector3.new(direction.X,cameray,direction.Z)
-						velocity.Velocity = direction * flyspeed
-						pause()
-					end
-					velocity.Velocity = Vector3.new(0,0,0)
-				end
-
-				if key.KeyCode == Enum.KeyCode.S and focusedcheck == "" then
-					while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
-						gyro.CFrame = game.Workspace.Camera.CFrame
-						local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 16
-						local cameray = -(game.Workspace.Camera.CFrame.LookVector.Y*16)
-						if tablefind(keys,"W") or tablefind(keys,"Q") or tablefind(keys,'E') then
-							if tablefind(keys,"Q") then
-								cameray = -16
-							elseif tablefind(keys,"E") then
-								cameray = 16
-							else
-								velocity.Velocity = Vector3.new(0,0,0)
-								repeat pause() until not tablefind(keys,"W") and not tablefind(keys,"Q") and not tablefind(keys,'E')
-
-							end
-						end
-						direction = Vector3.new(direction.X,cameray,direction.Z)
-						velocity.Velocity = direction * flyspeed
-						pause()
-					end
-					velocity.Velocity = Vector3.new(0,0,0)
-				end
-				if key.KeyCode == Enum.KeyCode.A and focusedcheck == "" or key.KeyCode == Enum.KeyCode.D and focusedcheck == "" then
-					local progress = 0
-					while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
-						gyro.CFrame = game.Workspace.Camera.CFrame
-						local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 16
-						local cameray = velocity.Velocity.Y
-						direction = Vector3.new(direction.X*flyspeed,cameray,direction.Z*flyspeed)
-						velocity.Velocity = direction
-						pause()
-					end
-					velocity.Velocity = Vector3.new(0,0,0)
-				end
-				if key.KeyCode == Enum.KeyCode.E and  focusedcheck == ""  then
-					while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
-						gyro.CFrame = game.Workspace.Camera.CFrame
-						local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 0
-						local cameray = 16
-						if tablefind(keys,'Q') then
-							cameray = 0
-						end
-						direction = Vector3.new(direction.X,cameray,direction.Z)
-						velocity.Velocity = direction * flyspeed
-						pause()
-					end
-					velocity.Velocity = Vector3.new(0,0,0)
-				end
-				if key.KeyCode == Enum.KeyCode.Q and  focusedcheck == ""  then
-					while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
-						gyro.CFrame = game.Workspace.Camera.CFrame
-						local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 0
-						local cameray = -16
-						if tablefind(keys,'E') then
-							cameray = 0
-						end
-						direction = Vector3.new(direction.X,cameray,direction.Z)
-						velocity.Velocity = direction * flyspeed
-						pause()
-					end
-					velocity.Velocity = Vector3.new(0,0,0)
-				end
-
-				if key.KeyCode == Enum.KeyCode.Space and focusedcheck == "" then
-					game.Players.LocalPlayer.Character.Humanoid.Sit = false
-				end
-
-				if key.KeyCode == Enum.KeyCode.LeftShift and focusedcheck == "" then
-					flyspeed = maxflyspeed
-					repeat pause() until key.UserInputState == Enum.UserInputState.End
-					flyspeed = maxflyspeed /2
-				end
-			end)
-
-			local qwe = uis.InputEnded:Connect(function(key)
-				if tablefind(keys,uis:GetStringForKeyCode(key.KeyCode)) then
-					local number = tablefind(keys,uis:GetStringForKeyCode(key.KeyCode))
-					table.remove(keys,number)
-				end
-			end)
-
-			while flying == true and game.Players.LocalPlayer.Character.Humanoid.Health > 0 do
-				gyro.CFrame = game.Workspace.Camera.CFrame
-				pause()
-			end
-			notify(2,"Flying turned off")
-			fli:Disconnect()
-			qwe:Disconnect()
-			focuschecc:Disconnect()
-			velocity:Destroy()
-			gyro:Destroy()
-			game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
-			flying = false
-		end)
-	else
-		flying = false
-
-	end
-end
-
-function unfly()
-	flying = false
-end
-
-function setspeedfly(int)
-	maxflyspeed = int*2
-	flyspeed = maxflyspeed / 2
-	notify(5,"Set flyspeed to ".. int)
-end
-
-noclipping = false
-
-function noclip()
-	if noclipping == false then
-		noclipping = true
-		spawn(function()
-			local clipi = game:GetService("RunService").Stepped:Connect(function()
-				for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-					if v:IsA("BasePart") and v.CanCollide == true then
-						v.CanCollide = false
-					end
-				end
-			end)
-			notify(5, "Noclip is enabled")
-			repeat pause() until noclipping == false or game.Players.LocalPlayer.Character.Humanoid.Health <= 0
-			noclipping = false
-			clip()
-			clipi:Disconnect()
-		end)
-	end
-end
-
-function clip()
-	if noclipping == true then
-	noclipping = false
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-		if v:IsA("BasePart") and not v.Name:match("Hand") and not v.Name:match("Foot") and not v.Name:match("Leg") then
-			v.CanCollide = true
-		end
-	end
-		notify(5, "Noclip is disabled")
-	end
-end
-
-
-
-
-
+-- Gui to Lua
+-- Version: 3.2
 
 -- Instances:
 
-local HarambeAdmin = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local adminthing = Instance.new("TextBox")
+local HarambeHub = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local NinjaSimulator = Instance.new("TextButton")
+local DestructionSimulator = Instance.new("TextButton")
+local Game1 = Instance.new("TextButton")
+local Game2 = Instance.new("TextButton")
+local Misc = Instance.new("TextButton")
+local TextBox = Instance.new("TextBox")
+local NinjaSimFrame = Instance.new("Frame")
+local Kill = Instance.new("TextButton")
+local AntiSmoke = Instance.new("TextButton")
+local Givetools = Instance.new("TextButton")
+local Knockback = Instance.new("TextButton")
+local Mute = Instance.new("TextButton")
+local AntiKnockback = Instance.new("TextButton")
+local ReflectDamage = Instance.new("TextButton")
+local AutoFarm = Instance.new("TextButton")
 
 --Properties:
 
-HarambeAdmin.Name = "HarambeAdmin"
-if game:GetService("RunService"):IsStudio() then
-	HarambeAdmin.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+HarambeHub.Name = "HarambeHub"
+if not game:GetService("RunService"):IsStudio() then
+	HarambeHub.Parent = game.CoreGui
 else
-	HarambeAdmin.Parent = game.CoreGui
+	HarambeHub.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 end
 
-Frame.Parent = HarambeAdmin
-Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Frame.Position = UDim2.new(0.435876518, 0, 0.480089098, 0)
-Frame.Size = UDim2.new(0.110638298, 10, 0.0450450443, 0)
-Frame.BackgroundTransparency = 0.2
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = HarambeHub
+MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.Position = UDim2.new(0, 505, 0, 356)
+MainFrame.Size = UDim2.new(0, 325, 0, 225)
+
+Title.Name = "Title"
+Title.Parent = MainFrame
+Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Title.Size = UDim2.new(0, 325, 0, 20)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "Harambe Hub - DeleonSploit Compatible!"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+NinjaSimulator.Name = "NinjaSimulator"
+NinjaSimulator.Parent = MainFrame
+NinjaSimulator.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+NinjaSimulator.BorderColor3 = Color3.fromRGB(255, 255, 255)
+NinjaSimulator.Position = UDim2.new(0, 0, 0, 20)
+NinjaSimulator.Size = UDim2.new(0.200000003, 0, 0, 20)
+NinjaSimulator.Font = Enum.Font.SourceSans
+NinjaSimulator.Text = "Ninja Simulator"
+NinjaSimulator.TextColor3 = Color3.fromRGB(255, 255, 255)
+NinjaSimulator.TextScaled = true
+NinjaSimulator.TextSize = 14.000
+NinjaSimulator.TextWrapped = true
+
+DestructionSimulator.Name = "DestructionSimulator"
+DestructionSimulator.Parent = MainFrame
+DestructionSimulator.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+DestructionSimulator.BorderColor3 = Color3.fromRGB(255, 255, 255)
+DestructionSimulator.Position = UDim2.new(0, 65, 0, 20)
+DestructionSimulator.Size = UDim2.new(0.200000003, 0, 0, 20)
+DestructionSimulator.Font = Enum.Font.SourceSans
+DestructionSimulator.Text = "Destrustion Simulator"
+DestructionSimulator.TextColor3 = Color3.fromRGB(255, 255, 255)
+DestructionSimulator.TextScaled = true
+DestructionSimulator.TextSize = 14.000
+DestructionSimulator.TextWrapped = true
+
+Game1.Name = "Game1"
+Game1.Parent = MainFrame
+Game1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Game1.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Game1.Position = UDim2.new(0, 130, 0, 20)
+Game1.Size = UDim2.new(0.200000003, 0, 0, 20)
+Game1.Font = Enum.Font.SourceSans
+Game1.Text = "Game 1"
+Game1.TextColor3 = Color3.fromRGB(255, 255, 255)
+Game1.TextScaled = true
+Game1.TextSize = 14.000
+Game1.TextWrapped = true
+
+Game2.Name = "Game2"
+Game2.Parent = MainFrame
+Game2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Game2.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Game2.Position = UDim2.new(0, 195, 0, 20)
+Game2.Size = UDim2.new(0.200000003, 0, 0, 20)
+Game2.Font = Enum.Font.SourceSans
+Game2.Text = "Game 2"
+Game2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Game2.TextScaled = true
+Game2.TextSize = 14.000
+Game2.TextWrapped = true
+
+Misc.Name = "Misc"
+Misc.Parent = MainFrame
+Misc.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Misc.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Misc.Position = UDim2.new(0, 260, 0, 20)
+Misc.Size = UDim2.new(0.200000003, 0, 0, 20)
+Misc.Font = Enum.Font.SourceSans
+Misc.Text = "Misc"
+Misc.TextColor3 = Color3.fromRGB(255, 255, 255)
+Misc.TextScaled = true
+Misc.TextSize = 14.000
+Misc.TextWrapped = true
+
+TextBox.Parent = MainFrame
+TextBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.BorderColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.Position = UDim2.new(0, 0, 0, 40)
+TextBox.Size = UDim2.new(0, 325, 0, 20)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.Text = "Helloo"
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextScaled = true
+TextBox.TextSize = 14.000
+TextBox.TextWrapped = true
+
+NinjaSimFrame.Name = "NinjaSimFrame"
+NinjaSimFrame.Parent = MainFrame
+NinjaSimFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+NinjaSimFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+NinjaSimFrame.Position = UDim2.new(0, 0, 0, 60)
+NinjaSimFrame.Size = UDim2.new(0, 325, 0, 165)
+
+Kill.Name = "Kill"
+Kill.Parent = NinjaSimFrame
+Kill.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Kill.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Kill.Size = UDim2.new(0.5, 0, 0.25, 0)
+Kill.ZIndex = 2
+Kill.Style = Enum.ButtonStyle.RobloxButton
+Kill.Font = Enum.Font.SourceSans
+Kill.Text = "Kill [Player]"
+Kill.TextColor3 = Color3.fromRGB(255, 255, 255)
+Kill.TextSize = 14.000
+
+AntiSmoke.Name = "AntiSmoke"
+AntiSmoke.Parent = NinjaSimFrame
+AntiSmoke.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+AntiSmoke.BorderColor3 = Color3.fromRGB(255, 255, 255)
+AntiSmoke.Position = UDim2.new(0, 0, 0.25, 0)
+AntiSmoke.Size = UDim2.new(0.5, 0, 0.25, 0)
+AntiSmoke.ZIndex = 2
+AntiSmoke.Style = Enum.ButtonStyle.RobloxButton
+AntiSmoke.Font = Enum.Font.SourceSans
+AntiSmoke.Text = "Anti smoke bombs"
+AntiSmoke.TextColor3 = Color3.fromRGB(255, 255, 255)
+AntiSmoke.TextSize = 14.000
+
+Givetools.Name = "Givetools"
+Givetools.Parent = NinjaSimFrame
+Givetools.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Givetools.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Givetools.Position = UDim2.new(0.5, 0, 0.25, 0)
+Givetools.Size = UDim2.new(0.5, 0, 0.25, 0)
+Givetools.Style = Enum.ButtonStyle.RobloxButton
+Givetools.Font = Enum.Font.SourceSans
+Givetools.Text = "Robux"
+Givetools.TextColor3 = Color3.fromRGB(255, 255, 255)
+Givetools.TextSize = 14.000
+
+Knockback.Name = "Knockback"
+Knockback.Parent = NinjaSimFrame
+Knockback.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Knockback.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Knockback.Position = UDim2.new(0.5, 0, 0, 0)
+Knockback.Size = UDim2.new(0.5, 0, 0.25, 0)
+Knockback.Style = Enum.ButtonStyle.RobloxButton
+Knockback.Font = Enum.Font.SourceSans
+Knockback.Text = "Knockback [Player], [Force], [Time]"
+Knockback.TextColor3 = Color3.fromRGB(255, 255, 255)
+Knockback.TextSize = 12.000
+
+Mute.Name = "Mute"
+Mute.Parent = NinjaSimFrame
+Mute.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Mute.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Mute.Position = UDim2.new(0, 0, 0.75, 0)
+Mute.Size = UDim2.new(0.5, 0, 0.25, 0)
+Mute.ZIndex = 2
+Mute.Style = Enum.ButtonStyle.RobloxButton
+Mute.Font = Enum.Font.SourceSans
+Mute.Text = "Mute flute [Player]"
+Mute.TextColor3 = Color3.fromRGB(255, 255, 255)
+Mute.TextSize = 14.000
+
+AntiKnockback.Name = "AntiKnockback"
+AntiKnockback.Parent = NinjaSimFrame
+AntiKnockback.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+AntiKnockback.BorderColor3 = Color3.fromRGB(255, 255, 255)
+AntiKnockback.Position = UDim2.new(0, 0, 0.5, 0)
+AntiKnockback.Size = UDim2.new(0.5, 0, 0.25, 0)
+AntiKnockback.ZIndex = 2
+AntiKnockback.Style = Enum.ButtonStyle.RobloxButton
+AntiKnockback.Font = Enum.Font.SourceSans
+AntiKnockback.Text = "Anti knockback"
+AntiKnockback.TextColor3 = Color3.fromRGB(255, 255, 255)
+AntiKnockback.TextSize = 14.000
+
+ReflectDamage.Name = "ReflectDamage"
+ReflectDamage.Parent = NinjaSimFrame
+ReflectDamage.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ReflectDamage.BorderColor3 = Color3.fromRGB(255, 255, 255)
+ReflectDamage.Position = UDim2.new(0.5, 0, 0.5, 0)
+ReflectDamage.Size = UDim2.new(0.5, 0, 0.25, 0)
+ReflectDamage.Style = Enum.ButtonStyle.RobloxButton
+ReflectDamage.Font = Enum.Font.SourceSans
+ReflectDamage.Text = "Reflect damage [Player]"
+ReflectDamage.TextColor3 = Color3.fromRGB(255, 255, 255)
+ReflectDamage.TextSize = 14.000
+
+AutoFarm.Name = "AutoFarm"
+AutoFarm.Parent = NinjaSimFrame
+AutoFarm.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+AutoFarm.BorderColor3 = Color3.fromRGB(255, 255, 255)
+AutoFarm.Position = UDim2.new(0.5, 0, 0.75, 0)
+AutoFarm.Size = UDim2.new(0.5, 0, 0.25, 0)
+AutoFarm.Style = Enum.ButtonStyle.RobloxButton
+AutoFarm.Font = Enum.Font.SourceSans
+AutoFarm.Text = "Autofarm use in dead servers"
+AutoFarm.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoFarm.TextSize = 14.000
+
+-- Scripts:
+
+local frame = NinjaSimFrame
+local tab = NinjaSimulator
+local antismoke = frame.AntiSmoke
+local killbutton = frame.Kill
+local knockback = frame.Knockback
+local antiknock = frame.AntiKnockback
+local givetools = frame.Givetools
+local reflectdamage = frame.ReflectDamage
+local mute = frame.Mute
+local autofarm = frame.AutoFarm
+local textbox = frame.Parent.TextBox
 
 
-adminthing.Name = "adminthing"
-adminthing.Parent = Frame
-adminthing.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-adminthing.BorderColor3 = Color3.fromRGB(255, 255, 255)
-adminthing.Position = UDim2.new(0, 0, 0.285714298, 0)
-adminthing.Size = UDim2.new(1, 0, 0.713999987, 0)
-adminthing.ClearTextOnFocus = false
-adminthing.Font = Enum.Font.Arial
-adminthing.PlaceholderColor3 = Color3.fromRGB(130, 130, 130)
-adminthing.PlaceholderText = "Harambe"
-adminthing.Text = ""
-adminthing.TextColor3 = Color3.fromRGB(80, 255, 229)
-adminthing.TextScaled = true
-adminthing.TextSize = 14.000
-adminthing.TextWrapped = true
-adminthing.BackgroundTransparency = 0.2
-
-local uis = game:GetService("UserInputService")
-local focused = false
-
-function focus()
-	Frame.BackgroundColor3 = Color3.fromRGB(0,0,0)
-	Frame.BackgroundTransparency = 0.2
-	adminthing.BackgroundTransparency = 0.2
-	adminthing:CaptureFocus()
-	adminthing.TextTransparency = 0
-end
-
-function unfocus()
-	adminthing:ReleaseFocus()
-	Frame.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
-	Frame.BackgroundTransparency = 0.95
-	adminthing.BackgroundTransparency = 0.6
-	adminthing.TextTransparency = 0.6
-end
-unfocus()
-
-uis.TextBoxFocused:Connect(function(thing)
-	focused = true
-end)
-
-uis.TextBoxFocusReleased:Connect(function()
-	focused = false
-end)
-
-uis.InputBegan:Connect(function(key)
-	if key.KeyCode == Enum.KeyCode.Semicolon and focused == false then
-		pause()
-		focus()
+tab.Changed:Connect(function()
+	if tab.BackgroundColor3 ~= Color3.fromRGB(0,0,0) then
+		frame.Visible = true
+	else
+		frame.Visible = false
 	end
 end)
 
-adminthing.FocusLost:Connect(function(enterpressed)
-	unfocus()
-	if enterpressed then
-		runcmd(adminthing.Text)
+local function getplayer(plr)
+	plr = tostring(plr):lower()
+	if plr == "me" or plr == "" then
+		return game.Players.LocalPlayer.Name
 	end
-end)
--------------------------------------------------------------------------------------------
-addcmd("fly", "")--D
-addcmd("unfly", "")--D
-addcmd("flyspeed", "number")--D
-addcmd("cmds", "")--D
-addcmd("noclip","")--D
-addcmd("clip","")--D
-addcmd("goto","player")
-addcmd("bang", ", number (optional)")
-addcmd("kill", "player")
-
-function runcmd(command)
-	local args = split(command, " ")
-	local cmd = args[1]
-	if cmd == "fly" then
-		fly()
-	elseif cmd == "unfly" then
-		unfly()
-	elseif cmd == "flyspeed" then
-		local number = tonumber(cmd:sub(10))
-		setspeedfly(number)
-	elseif cmd == "noclip" then
-		noclip()
-	elseif cmd == "clip" then
-		clip()
-	elseif cmd == "cmds" then
-		notify(5, "Type /console in chat or open the developer console to view the commands")
-		local printie = "\n"
-		for i,v in pairs(commands.cmdview) do
-			printie = printie.. v.. "\n"
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if v.Name:lower():match(plr) then
+			return v.Name
 		end
-		print(printie)
-	elseif cmd == "goto" then
-		local target = getplayer(args[2])
-		if target then
-			local targetroot = target.Character:FindFirstChild("HumanoidRootPart") or target.Character:FindFirstChild("Torso") or target.Character:FindFirstChild("UpperTorso") or target.Character:FindFirstChild("Head")
-			if targetroot then
-				lp.Character.HumanoidRootPart.CFrame = targetroot.CFrame
+	end
+end
+
+
+local antismokeclicked = false
+antismoke.MouseButton1Click:Connect(function()
+	if antismokeclicked == false then
+		antismokeclicked = true
+		game.Players.LocalPlayer.PlayerGui.ChildAdded:Connect(function(thing)
+			game:GetService("RunService").Stepped:Wait()
+			if thing.Name == "SmokeScreen" then
+				thing:Destroy()
+			end
+		end)
+		antismoke.Text = "Used"
+	end
+end)
+
+killbutton.MouseButton1Click:Connect(function()
+	local target = getplayer(textbox.Text)
+	function damage(plr)
+		if plr then
+			local A_1 = game.Players[plr].Character.Humanoid
+			local A_2 = "spirit"
+			local Event = game:GetService("ReplicatedStorage").Remotes.Damage
+			Event:InvokeServer(A_1, A_2)
+		end
+	end
+
+	if target then
+		repeat
+			game:GetService("RunService").Stepped:Wait()
+			pcall(function()
+				damage(target)
+			end)
+		until not game.Players:FindFirstChild(target) or game.Players[target].Character.Humanoid.Health <= 0
+	end
+end)
+
+antiknock.MouseButton1Click:Connect(function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.ChildAdded:Connect(function(part)
+		game:GetService("RunService").Stepped:Wait()
+		if part:IsA("BodyVelocity") then
+			part:Destroy()
+		end
+	end)
+end)
+
+givetools.MouseButton1Click:Connect(function()
+
+end)
+
+knockback.MouseButton1Click:Connect(function()
+	local args = textbox.Text:split(" ")
+	local function knockback(plr,int1,int2)
+		local A_1 = game.Players[plr].Character.Humanoid
+		local A_2 = int1 -- speed
+		local A_3 = int2 -- time
+		local Event = game:GetService("ReplicatedStorage").Remotes.Knockback
+		Event:InvokeServer(A_1, A_2, A_3)
+	end
+	knockback(getplayer(args[2]), args[3], args[4])
+end)
+
+reflectdamage.MouseButton1Click:Connect(function()
+	local target = getplayer(textbox.Text)
+	local function knockback(plr,int1,int2)
+		local A_1 = game.Players[plr].Character.Humanoid
+		local A_2 = int1 -- speed
+		local A_3 = int2 -- time
+		local Event = game:GetService("ReplicatedStorage").Remotes.Knockback
+		Event:InvokeServer(A_1, A_2, A_3)
+	end
+
+	local function damage(plr)
+		local A_1 = game.Players[plr].Character.Humanoid
+		local A_2 = "spirit"
+		local tool = game.Players[plr].Character:FindFirstChildWhichIsA("Tool")
+		if tool then
+			if tool.Name == "Frozen Heart" then
+				A_2 = "frozen"
+			elseif tool.Name == "Neptas" or tool.Name == "Spirt Of Life" or tool.Name == "Bloody Heart" or tool.Name == "Flaming Katana" then
+				A_2 = "spirit"
+				if tool.Name == "Neptas" then
+					knockback(plr, 5234000,2342344)
+				elseif tool.Name == "Bloody Heart" then
+					knockback(plr, 100,0.2)
+				else
+					knockback(plr, 50,0.15)
+				end
+			elseif tool.Name:lower():match("katana") or tool.Name:lower():match("blade") or tool.Name:lower():match("katana") or tool.Name:lower():match("slimy") or tool.Name:lower():match("rainbow") or tool.Name:lower():match("oof") or tool.Name == "X" then
+				A_2 = "katana"
+			else
+				A_2 = "katana"
+				knockback(plr, 25,0.2)
 			end
 		else
-			notifyerror(5,"Player isn't in the game.")
+			A_2 = "punch"
+			knockback(plr, 25,0.2)
 		end
-	end ----------- END OF COMMANDS
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-local UIS = game:GetService("UserInputService")
-function dragify(Frame)
-	dragToggle = nil
-	dragSpeed = 1
-	dragInput = nil
-	dragStart = nil
-	dragPos = nil
-	function updateInput(input)
-		Delta = input.Position - dragStart
-		Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
-		game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
+		local Event = game:GetService("ReplicatedStorage").Remotes.Damage
+		Event:InvokeServer(A_1, A_2)
 	end
-	Frame.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			if UIS:GetFocusedTextBox() == nil then
-				dragToggle = true
-				dragStart = input.Position
-				startPos = Frame.Position
-				input.Changed:Connect(function()
-					if input.UserInputState == Enum.UserInputState.End then
-						dragToggle = false
-					end
+	local lastname = ""
+	local used = false
+	game.Players[target].Character.Humanoid.ChildAdded:Connect(function(part)
+		if part.Name == "creator" and part:IsA("ObjectValue") and used == false then
+			used = true
+			damage(part.Value.Name)
+		end
+		game:GetService("RunService").Stepped:Wait()
+		used = false
+	end)
+end)
+
+mute.MouseButton1Click:Connect(function()
+	local player = getplayer(textbox.Text)
+
+	for i,v in pairs(game.Players[player].Character:GetDescendants()) do
+		if v:IsA("Sound") then
+			v.Playing = false
+		end
+	end
+end)
+
+autofarm.MouseButton1Click:Connect(function()
+	_G.slowgainchininjasimtaCO = not _G.slowgainchininjasimtaCO
+	local levelswanted = math.huge
+	local levelsgained = 0
+	local currentlevel = game.Players.LocalPlayer.leaderstats.Level.Value
+	local poopieheadermo = game.Players.LocalPlayer.leaderstats.Level.Changed:Connect(function()
+		if game.Players.LocalPlayer.leaderstats.Level.Value ~= currentlevel then
+			levelsgained = levelsgained + 1
+			currentlevel = game.Players.LocalPlayer.leaderstats.Level.Value
+			if levelsgained >= levelswanted then
+				_G.slowgainchininjasimtaCO = false
+			end
+		end
+	end)
+	local speed = 10
+	local function givechi()
+		for i = 1,speed do
+			if _G.slowgainchininjasimtaCO == true then
+				spawn(function()
+					pcall(function()
+						if _G.slowgainchininjasimtaCO == true and #game.Players:GetPlayers() > 3 then
+							local A_1 = game:GetService("Workspace")["先生"].Humanoid
+							local A_2 = "punch"
+							local Event = game:GetService("ReplicatedStorage").Remotes.Damage
+							Event:InvokeServer(A_1, A_2)
+						else
+							_G.slowgainchininjasimtaCO = false
+						end
+					end)
 				end)
 			end
 		end
-	end)
-	Frame.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
+	end
+
+	if _G.slowgainchininjasimtaCO == true then
+		while _G.slowgainchininjasimtaCO == true do
+			game:GetService("RunService").Stepped:Wait()
+			if _G.slowgainchininjasimtaCO == true then
+				givechi()
+				if _G.slowgainchininjasimtaCO == false then
+					poopieheadermo:Disconnect()
+					break
+				end
+			else
+				poopieheadermo:Disconnect()
+				break
+			end
 		end
-	end)
-	game:GetService("UserInputService").InputChanged:Connect(function(input)
-		if input == dragInput and dragToggle then
-			updateInput(input)
-		end
-	end)
-end
-dragify(Frame)
+	end
+end)
