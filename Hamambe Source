@@ -318,6 +318,7 @@ killbutton.MouseButton1Click:Connect(function()
 			pcall(function()
 				damage(target)
 			end)
+			wait()
 		until not game.Players:FindFirstChild(target) or game.Players[target].Character.Humanoid.Health <= 0
 	end
 end)
@@ -337,6 +338,7 @@ end)
 
 knockback.MouseButton1Click:Connect(function()
 	local args = split(textbox.Text," ")
+	print(args[1]..", "..args[2]..", "..args[3])
 	local function knockback(plr,int1,int2)
 		local A_1 = game.Players[plr].Character.Humanoid
 		local A_2 = int1 -- speed
