@@ -411,7 +411,11 @@ mute.MouseButton1Click:Connect(function()
 end)
 
 autofarm.MouseButton1Click:Connect(function()
-	_G.slowgainchininjasimtaCO = not _G.slowgainchininjasimtaCO
+if _G.slowgainchininjasimtaCO == false then
+	_G.slowgainchininjasimtaCO = true
+	else
+	_G.slowgainchininjasimtaCO = false
+end
 	local levelswanted = math.huge
 	local levelsgained = 0
 	local currentlevel = game.Players.LocalPlayer.leaderstats.Level.Value
@@ -430,7 +434,7 @@ autofarm.MouseButton1Click:Connect(function()
 			if _G.slowgainchininjasimtaCO == true then
 				spawn(function()
 					pcall(function()
-						if _G.slowgainchininjasimtaCO == true and #game.Players:GetPlayers() > 3 then
+						if _G.slowgainchininjasimtaCO == true and #game.Players:GetPlayers() < 3 then
 							local A_1 = game:GetService("Workspace")["先生"].Humanoid
 							local A_2 = "punch"
 							local Event = game:GetService("ReplicatedStorage").Remotes.Damage
