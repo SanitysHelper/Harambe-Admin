@@ -344,7 +344,7 @@ knockback.MouseButton1Click:Connect(function()
 		local Event = game:GetService("ReplicatedStorage").Remotes.Knockback
 		Event:InvokeServer(A_1, A_2, A_3)
 	end
-	knockback(getplayer(args[2]), args[3], args[4])
+	knockback(getplayer(args[1]), args[2], args[3])
 end)
 
 reflectdamage.MouseButton1Click:Connect(function()
