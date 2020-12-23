@@ -31,6 +31,15 @@ local Push = Instance.new("TextButton")
 local Antirag = Instance.new("TextButton")
 local BombAll = Instance.new("TextButton")
 local Bomb = Instance.new("TextButton")
+local MiscFrame = Instance.new("Frame")
+local Fly = Instance.new("TextButton")
+local Afk = Instance.new("TextButton")
+local Idea = Instance.new("TextButton")
+local FlySpeedo = Instance.new("TextButton")
+local Idea_2 = Instance.new("TextButton")
+local Idea_3 = Instance.new("TextButton")
+local Idea_4 = Instance.new("TextButton")
+local Idea_5 = Instance.new("TextButton")
 
 --Properties:
 
@@ -61,7 +70,7 @@ Title.TextWrapped = true
 
 NinjaSimulator.Name = "NinjaSimulator"
 NinjaSimulator.Parent = MainFrame
-NinjaSimulator.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+NinjaSimulator.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 NinjaSimulator.BorderColor3 = Color3.fromRGB(255, 255, 255)
 NinjaSimulator.Position = UDim2.new(0, 0, 0.088888891, 0)
 NinjaSimulator.Size = UDim2.new(0.200000003, 0, 0.088888891, 0)
@@ -394,9 +403,135 @@ Bomb.TextScaled = true
 Bomb.TextSize = 14.000
 Bomb.TextWrapped = true
 
+MiscFrame.Name = "MiscFrame"
+MiscFrame.Parent = MainFrame
+MiscFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+MiscFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+MiscFrame.Position = UDim2.new(0, 0, 0.266666681, 0)
+MiscFrame.Size = UDim2.new(1, 0, 0.733333349, 0)
+
+Fly.Name = "Fly"
+Fly.Parent = MiscFrame
+Fly.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Fly.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Fly.Size = UDim2.new(0.5, 0, 0.25, 0)
+Fly.ZIndex = 2
+Fly.Style = Enum.ButtonStyle.RobloxButton
+Fly.Font = Enum.Font.SourceSans
+Fly.Text = "Fly [off]"
+Fly.TextColor3 = Color3.fromRGB(255, 255, 255)
+Fly.TextScaled = true
+Fly.TextSize = 14.000
+Fly.TextWrapped = true
+
+Afk.Name = "Afk"
+Afk.Parent = MiscFrame
+Afk.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Afk.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Afk.Position = UDim2.new(0.5, 0, 0, 0)
+Afk.Size = UDim2.new(0.5, 0, 0.25, 0)
+Afk.ZIndex = 2
+Afk.Style = Enum.ButtonStyle.RobloxButton
+Afk.Font = Enum.Font.SourceSans
+Afk.Text = "Anti afk [off]"
+Afk.TextColor3 = Color3.fromRGB(255, 255, 255)
+Afk.TextScaled = true
+Afk.TextSize = 14.000
+Afk.TextWrapped = true
+
+Idea.Name = "Idea"
+Idea.Parent = MiscFrame
+Idea.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Idea.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Idea.Position = UDim2.new(0.5, 0, 0.25, 0)
+Idea.Size = UDim2.new(0.5, 0, 0.25, 0)
+Idea.ZIndex = 2
+Idea.Style = Enum.ButtonStyle.RobloxButton
+Idea.Font = Enum.Font.SourceSans
+Idea.Text = "Idea"
+Idea.TextColor3 = Color3.fromRGB(255, 255, 255)
+Idea.TextScaled = true
+Idea.TextSize = 14.000
+Idea.TextWrapped = true
+
+FlySpeedo.Name = "FlySpeedo"
+FlySpeedo.Parent = MiscFrame
+FlySpeedo.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+FlySpeedo.BorderColor3 = Color3.fromRGB(255, 255, 255)
+FlySpeedo.Position = UDim2.new(0, 0, 0.25, 0)
+FlySpeedo.Size = UDim2.new(0.5, 0, 0.25, 0)
+FlySpeedo.ZIndex = 2
+FlySpeedo.Style = Enum.ButtonStyle.RobloxButton
+FlySpeedo.Font = Enum.Font.SourceSans
+FlySpeedo.Text = "Flyspeed [number]"
+FlySpeedo.TextColor3 = Color3.fromRGB(255, 255, 255)
+FlySpeedo.TextScaled = true
+FlySpeedo.TextSize = 14.000
+FlySpeedo.TextWrapped = true
+
+Idea_2.Name = "Idea"
+Idea_2.Parent = MiscFrame
+Idea_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Idea_2.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Idea_2.Position = UDim2.new(0.5, 0, 0.75, 0)
+Idea_2.Size = UDim2.new(0.5, 0, 0.25, 0)
+Idea_2.ZIndex = 2
+Idea_2.Style = Enum.ButtonStyle.RobloxButton
+Idea_2.Font = Enum.Font.SourceSans
+Idea_2.Text = "Idea"
+Idea_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Idea_2.TextScaled = true
+Idea_2.TextSize = 14.000
+Idea_2.TextWrapped = true
+
+Idea_3.Name = "Idea"
+Idea_3.Parent = MiscFrame
+Idea_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Idea_3.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Idea_3.Position = UDim2.new(0, 0, 0.75, 0)
+Idea_3.Size = UDim2.new(0.5, 0, 0.25, 0)
+Idea_3.ZIndex = 2
+Idea_3.Style = Enum.ButtonStyle.RobloxButton
+Idea_3.Font = Enum.Font.SourceSans
+Idea_3.Text = "Idea"
+Idea_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Idea_3.TextScaled = true
+Idea_3.TextSize = 14.000
+Idea_3.TextWrapped = true
+
+Idea_4.Name = "Idea"
+Idea_4.Parent = MiscFrame
+Idea_4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Idea_4.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Idea_4.Position = UDim2.new(0, 0, 0.5, 0)
+Idea_4.Size = UDim2.new(0.5, 0, 0.25, 0)
+Idea_4.ZIndex = 2
+Idea_4.Style = Enum.ButtonStyle.RobloxButton
+Idea_4.Font = Enum.Font.SourceSans
+Idea_4.Text = "Idea"
+Idea_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+Idea_4.TextScaled = true
+Idea_4.TextSize = 14.000
+Idea_4.TextWrapped = true
+
+Idea_5.Name = "Idea"
+Idea_5.Parent = MiscFrame
+Idea_5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Idea_5.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Idea_5.Position = UDim2.new(0.5, 0, 0.5, 0)
+Idea_5.Size = UDim2.new(0.5, 0, 0.25, 0)
+Idea_5.ZIndex = 2
+Idea_5.Style = Enum.ButtonStyle.RobloxButton
+Idea_5.Font = Enum.Font.SourceSans
+Idea_5.Text = "Idea"
+Idea_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+Idea_5.TextScaled = true
+Idea_5.TextSize = 14.000
+Idea_5.TextWrapped = true
+
 -- Scripts:
 
-local function ZKHI_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
+local function ZHXRT_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
 	local script = Instance.new('LocalScript', NinjaSimFrame)
 
 	local function split(text, splitter)
@@ -617,14 +752,32 @@ local function ZKHI_fake_script() -- NinjaSimFrame.NinjaFrameStuff
 		end
 	end)
 end
-coroutine.wrap(ZKHI_fake_script)()
-local function KCIJXBL_fake_script() -- MainFrame.Selector 
+coroutine.wrap(ZHXRT_fake_script)()
+local function UHOEQE_fake_script() -- MainFrame.Selector 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	local mainframe = script.Parent
-	local selected = mainframe.NinjaSimulator
-	local selector = Instance.new("LocalScript",selected)
+	local selected = nil
+	local selector = Instance.new("LocalScript")
 	selector.Name = "Selected"
+	
+	if game.GameId == 424968782 then
+		selector.Parent = mainframe.NinjaSimulator
+		selected = mainframe.NinjaSimulator
+		
+	elseif game.GameId == 781563604 then
+		selector.Parent = mainframe.DestructionSimulator
+		selected = mainframe.DestructionSimulator
+		
+	elseif game.GameId == 719754874 then
+		selector.Parent = mainframe.RagdollEngine
+		selected = mainframe.RagdollEngine
+	else
+		selector.Parent = mainframe.Misc
+		selected = mainframe.Misc
+	end
+	
+	
 	for i,v in pairs(mainframe:GetChildren()) do
 		if v:IsA("TextButton") then
 			v.MouseButton1Click:Connect(function()
@@ -635,6 +788,9 @@ local function KCIJXBL_fake_script() -- MainFrame.Selector
 					v.BackgroundColor3 = Color3.fromRGB(60,60,60)				
 				end	
 			end)
+			if v.Name == selector.Parent.Name then
+				v.BackgroundColor3 = Color3.fromRGB(60,60,60)
+			end
 			v.Changed:Connect(function()
 				game:GetService("RunService").Stepped:Wait()
 				if v.Name == selector.Parent.Name and v.Name == "NinjaSimulator" then
@@ -652,13 +808,14 @@ local function KCIJXBL_fake_script() -- MainFrame.Selector
 				elseif v.Name == "RagdollEngine" then
 					mainframe.RagdollEngFrame.Visible = false
 				end
+				if v.Name == selector.Parent.Name and v.Name == "Misc" then
+					mainframe.MiscFrame.Visible = true
+				elseif v.Name == "Misc" then
+					mainframe.MiscFrame.Visible = false
+				end
 			end)
 		end
 	end
-	
-	
-	
-	
 	
 	
 	
@@ -719,8 +876,8 @@ local function KCIJXBL_fake_script() -- MainFrame.Selector
 	end
 	dragify(mainframe)
 end
-coroutine.wrap(KCIJXBL_fake_script)()
-local function ADJLIG_fake_script() -- DestructionSim.DestructSim 
+coroutine.wrap(UHOEQE_fake_script)()
+local function EGNCUJ_fake_script() -- DestructionSim.DestructSim 
 	local script = Instance.new('LocalScript', DestructionSim)
 
 	local frame = script.Parent
@@ -791,8 +948,8 @@ local function ADJLIG_fake_script() -- DestructionSim.DestructSim
 		bomb.BlastForce =  458309834905
 	end)
 end
-coroutine.wrap(ADJLIG_fake_script)()
-local function LTTCR_fake_script() -- RagdollEngFrame.LocalScript 
+coroutine.wrap(EGNCUJ_fake_script)()
+local function POCBTV_fake_script() -- RagdollEngFrame.RagdollScript 
 	local script = Instance.new('LocalScript', RagdollEngFrame)
 
 	local frame = script.Parent
@@ -887,4 +1044,239 @@ local function LTTCR_fake_script() -- RagdollEngFrame.LocalScript
 		end
 	end)
 end
-coroutine.wrap(LTTCR_fake_script)()
+coroutine.wrap(POCBTV_fake_script)()
+local function ZPKQ_fake_script() -- MiscFrame.MiscScript 
+	local script = Instance.new('LocalScript', MiscFrame)
+
+	local function split(text, splitter)
+		text = text..splitter
+		local returning = {}
+		local returningtxt = ""
+		for i = 1,#text do
+			if text:sub(i,i) ~= splitter and splitter ~= "" then
+				returningtxt = returningtxt..text:sub(i,i)
+			else
+				if splitter == "" then
+					returning[#returning+1] = text:sub(i,i)
+				else
+					returning[#returning+1] = returningtxt
+				end
+				returningtxt = ""
+			end
+		end
+		return returning
+	end
+	
+	function tablefind(table, string)
+		for i,v in pairs(table) do
+			if v == string then
+				return i
+			end
+		end
+	end
+	
+	
+	
+	local frame = script.Parent
+	local textbox = frame.Parent.TextBox
+	local antiafk = frame.Afk
+	local flybutton = frame.Fly
+	local flyspeedbutton = frame.FlySpeedo
+	local afkpressed = false
+	antiafk.MouseButton1Click:Connect(function()
+		afkpressed = not afkpressed
+		if afkpressed == true then
+			antiafk.Text = "Anti afk [on]"
+		else
+			antiafk.Text = "Anti afk [off]"
+		end
+		if afkpressed == true then
+			local vu = game:GetService("VirtualUser")
+			local idler = game:GetService("Players").LocalPlayer.Idled:connect(function()
+				vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+				wait(1)
+				vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+			end)
+			repeat wait() until afkpressed == false
+			idler:Disconnect()
+			print("Stopped")
+		end
+	end)
+	
+	
+	
+	local maxflyspeed = 2*2
+	local flyspeed = maxflyspeed/2
+	local flying = false
+	local function fly()
+		if flying == false then
+			flybutton.Text = "Fly [on]"
+			spawn(function()
+				flying = true
+				local x = 0
+				local y = 0
+				local z = 0
+				local keys = {}
+				local focusedcheck = ""
+				local status = "none"
+				game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
+				local uis = game:GetService("UserInputService")
+				local velocity = Instance.new("BodyVelocity",game.Players.LocalPlayer.Character.HumanoidRootPart)
+				velocity.MaxForce = Vector3.new('inf','inf','inf')
+				local gyro = Instance.new("BodyGyro",game.Players.LocalPlayer.Character.HumanoidRootPart)
+				gyro.MaxTorque = Vector3.new('inf','inf','inf')
+				gyro.D = 300
+				gyro.P = 9000
+				local focuschecc = uis.TextBoxFocused:Connect(function(thing)
+					focusedcheck = thing.Name
+					uis.TextBoxFocusReleased:Wait()
+					focusedcheck = ""
+				end)
+				velocity.Velocity = Vector3.new(0,0,0)
+				local fli = uis.InputBegan:Connect(function(key)
+					if not tablefind(keys,uis:GetStringForKeyCode(key.KeyCode)) then
+						keys[#keys+1] = uis:GetStringForKeyCode(key.KeyCode)
+					end
+					if key.KeyCode == Enum.KeyCode.W and focusedcheck == "" then
+						while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
+							gyro.CFrame = game.Workspace.Camera.CFrame
+							local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 16
+							local cameray = game.Workspace.Camera.CFrame.LookVector.Y*16
+							if tablefind(keys,"S") or tablefind(keys,"Q") or tablefind(keys,'E') then
+								if tablefind(keys,"Q") then
+									cameray = -16
+								elseif tablefind(keys,"E") then
+									cameray = 16
+								else
+									velocity.Velocity = Vector3.new(0,0,0)
+									repeat game:GetService("RunService").Stepped:Wait() until not tablefind(keys,"S") and not tablefind(keys,"Q") and not tablefind(keys,'E')
+								end
+							end
+							direction = Vector3.new(direction.X,cameray,direction.Z)
+							velocity.Velocity = direction * flyspeed
+							game:GetService("RunService").Stepped:Wait()
+						end
+						velocity.Velocity = Vector3.new(0,0,0)
+					end
+	
+					if key.KeyCode == Enum.KeyCode.S and focusedcheck == "" then
+						while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
+							gyro.CFrame = game.Workspace.Camera.CFrame
+							local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 16
+							local cameray = -(game.Workspace.Camera.CFrame.LookVector.Y*16)
+							if tablefind(keys,"W") or tablefind(keys,"Q") or tablefind(keys,'E') then
+								if tablefind(keys,"Q") then
+									cameray = -16
+								elseif tablefind(keys,"E") then
+									cameray = 16
+								else
+									velocity.Velocity = Vector3.new(0,0,0)
+									repeat game:GetService("RunService").Stepped:Wait() until not tablefind(keys,"W") and not tablefind(keys,"Q") and not tablefind(keys,'E')
+	
+								end
+							end
+							direction = Vector3.new(direction.X,cameray,direction.Z)
+							velocity.Velocity = direction * flyspeed
+							game:GetService("RunService").Stepped:Wait()
+						end
+						velocity.Velocity = Vector3.new(0,0,0)
+					end
+					if key.KeyCode == Enum.KeyCode.A and focusedcheck == "" or key.KeyCode == Enum.KeyCode.D and focusedcheck == "" then
+						local progress = 0
+						while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
+							gyro.CFrame = game.Workspace.Camera.CFrame
+							local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 16
+							local cameray = velocity.Velocity.Y
+							direction = Vector3.new(direction.X*flyspeed,cameray,direction.Z*flyspeed)
+							velocity.Velocity = direction
+							game:GetService("RunService").Stepped:Wait()
+						end
+						velocity.Velocity = Vector3.new(0,0,0)
+					end
+					if key.KeyCode == Enum.KeyCode.E and  focusedcheck == ""  then
+						while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
+							gyro.CFrame = game.Workspace.Camera.CFrame
+							local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 0
+							local cameray = 16
+							if tablefind(keys,'Q') then
+								cameray = 0
+							end
+							direction = Vector3.new(direction.X,cameray,direction.Z)
+							velocity.Velocity = direction * flyspeed
+							game:GetService("RunService").Stepped:Wait()
+						end
+						velocity.Velocity = Vector3.new(0,0,0)
+					end
+					if key.KeyCode == Enum.KeyCode.Q and  focusedcheck == ""  then
+						while key.UserInputState ~=Enum.UserInputState.End and flying == true  do
+							gyro.CFrame = game.Workspace.Camera.CFrame
+							local direction = game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 0
+							local cameray = -16
+							if tablefind(keys,'E') then
+								cameray = 0
+							end
+							direction = Vector3.new(direction.X,cameray,direction.Z)
+							velocity.Velocity = direction * flyspeed
+							game:GetService("RunService").Stepped:Wait()
+						end
+						velocity.Velocity = Vector3.new(0,0,0)
+					end
+	
+					if key.KeyCode == Enum.KeyCode.Space and focusedcheck == "" then
+						game.Players.LocalPlayer.Character.Humanoid.Sit = false
+					end
+	
+					if key.KeyCode == Enum.KeyCode.LeftShift and focusedcheck == "" then
+						flyspeed = maxflyspeed
+						repeat game:GetService("RunService").Stepped:Wait() until key.UserInputState == Enum.UserInputState.End
+						flyspeed = maxflyspeed /2
+					end
+				end)
+	
+				local qwe = uis.InputEnded:Connect(function(key)
+					if tablefind(keys,uis:GetStringForKeyCode(key.KeyCode)) then
+						local number = tablefind(keys,uis:GetStringForKeyCode(key.KeyCode))
+						table.remove(keys,number)
+					end
+				end)
+	
+				while flying == true and game.Players.LocalPlayer.Character.Humanoid.Health > 0 do
+					gyro.CFrame = game.Workspace.Camera.CFrame
+					game:GetService("RunService").Stepped:Wait()
+				end
+				fli:Disconnect()
+				qwe:Disconnect()
+				focuschecc:Disconnect()
+				velocity:Destroy()
+				gyro:Destroy()
+				game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+				flying = false
+				flybutton.Text = "Fly [off]"
+			end)
+		else
+			flying = false
+			flybutton.Text = "Fly [off]"
+		end
+	end
+	
+	function unfly()
+		flying = false
+	end
+	
+	function setspeedfly(int)
+		maxflyspeed = int*2
+		flyspeed = maxflyspeed / 2
+	end
+	
+	
+	
+	flybutton.MouseButton1Click:Connect(function()
+		fly()
+	end)
+	
+	
+	flyspeedbutton.MouseButton1Click:Connect(function()
+		setspeedfly(textbox.Text)
+	end)
+end
+coroutine.wrap(ZPKQ_fake_script)()
