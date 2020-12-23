@@ -655,11 +655,13 @@ local function XPIN_fake_script() -- DestructionSim.DestructSim
 	as.MouseButton1Click:Connect(function()
 		if pressed == false then
 			pressed = true
-			while game:GetService("RunService").Stepped:Wait() do
-				local Event = game:GetService("ReplicatedStorage").Remotes.sellBricks
-				Event:FireServer()
-			end
 			as.Text = "Pressed"
+			while game:GetService("RunService").Stepped:Wait() do
+				pcall(function()
+					local Event = game:GetService("ReplicatedStorage").Remotes.sellBricks
+					Event:FireServer()
+				end)
+			end
 		end
 	end)
 	
