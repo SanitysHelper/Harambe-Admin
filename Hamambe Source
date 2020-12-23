@@ -120,7 +120,7 @@ TextBox.BorderColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.Position = UDim2.new(0, 0, 0, 40)
 TextBox.Size = UDim2.new(0, 325, 0, 20)
 TextBox.Font = Enum.Font.SourceSans
-TextBox.Text = "Helloo"
+TextBox.Text = ""
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.TextScaled = true
 TextBox.TextSize = 14.000
@@ -234,7 +234,7 @@ AutoFarm.TextSize = 14.000
 
 -- Scripts:
 
-local function SMRDCF_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
+local function YJCME_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
 	local script = Instance.new('LocalScript', NinjaSimFrame)
 
 	local function split(text, splitter)
@@ -465,8 +465,8 @@ local function SMRDCF_fake_script() -- NinjaSimFrame.NinjaFrameStuff
 		end
 	end)
 end
-coroutine.wrap(SMRDCF_fake_script)()
-local function RNJPHU_fake_script() -- MainFrame.Selector 
+coroutine.wrap(YJCME_fake_script)()
+local function VZGFD_fake_script() -- MainFrame.Selector 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	local selected = script.Parent.NinjaSimulator
@@ -484,5 +484,44 @@ local function RNJPHU_fake_script() -- MainFrame.Selector
 			end)
 		end
 	end
+	
+	local UIS = game:GetService("UserInputService")
+	local function dragify(Frame)
+		local dragToggle = nil
+		local dragSpeed = 1
+		local dragInput = nil
+		local dragStart = nil
+		local dragPos = nil
+		function updateInput(input)
+			local Delta = input.Position - dragStart
+			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
+		end
+		Frame.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				if UIS:GetFocusedTextBox() == nil then
+					dragToggle = true
+					dragStart = input.Position
+					startPos = Frame.Position
+					input.Changed:Connect(function()
+						if input.UserInputState == Enum.UserInputState.End then
+							dragToggle = false
+						end
+					end)
+				end
+			end
+		end)
+		Frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if input == dragInput and dragToggle then
+				updateInput(input)
+			end
+		end)
+	end
+	dragify(script.Parent)
 end
-coroutine.wrap(RNJPHU_fake_script)()
+coroutine.wrap(VZGFD_fake_script)()
