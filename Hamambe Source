@@ -8,7 +8,7 @@ local MainFrame = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
 local NinjaSimulator = Instance.new("TextButton")
 local DestructionSimulator = Instance.new("TextButton")
-local Game1 = Instance.new("TextButton")
+local RagdollEngine = Instance.new("TextButton")
 local Game2 = Instance.new("TextButton")
 local Misc = Instance.new("TextButton")
 local TextBox = Instance.new("TextBox")
@@ -26,6 +26,11 @@ local AutoSell = Instance.new("TextButton")
 local BlowUpArea = Instance.new("TextButton")
 local ModRocket = Instance.new("TextButton")
 local ModBomb = Instance.new("TextButton")
+local RagdollEngFrame = Instance.new("Frame")
+local Push = Instance.new("TextButton")
+local Antirag = Instance.new("TextButton")
+local BombAll = Instance.new("TextButton")
+local Bomb = Instance.new("TextButton")
 
 --Properties:
 
@@ -80,18 +85,18 @@ DestructionSimulator.TextScaled = true
 DestructionSimulator.TextSize = 14.000
 DestructionSimulator.TextWrapped = true
 
-Game1.Name = "Game1"
-Game1.Parent = MainFrame
-Game1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Game1.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Game1.Position = UDim2.new(0.400000006, 0, 0.088888891, 0)
-Game1.Size = UDim2.new(0.200000003, 0, 0.088888891, 0)
-Game1.Font = Enum.Font.SourceSans
-Game1.Text = "Game 1"
-Game1.TextColor3 = Color3.fromRGB(255, 255, 255)
-Game1.TextScaled = true
-Game1.TextSize = 14.000
-Game1.TextWrapped = true
+RagdollEngine.Name = "RagdollEngine"
+RagdollEngine.Parent = MainFrame
+RagdollEngine.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+RagdollEngine.BorderColor3 = Color3.fromRGB(255, 255, 255)
+RagdollEngine.Position = UDim2.new(0.400000006, 0, 0.088888891, 0)
+RagdollEngine.Size = UDim2.new(0.200000003, 0, 0.088888891, 0)
+RagdollEngine.Font = Enum.Font.SourceSans
+RagdollEngine.Text = "Ragdoll Engine"
+RagdollEngine.TextColor3 = Color3.fromRGB(255, 255, 255)
+RagdollEngine.TextScaled = true
+RagdollEngine.TextSize = 14.000
+RagdollEngine.TextWrapped = true
 
 Game2.Name = "Game2"
 Game2.Parent = MainFrame
@@ -261,6 +266,7 @@ DestructionSim.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 DestructionSim.BorderColor3 = Color3.fromRGB(255, 255, 255)
 DestructionSim.Position = UDim2.new(0, 0, 0.266666681, 0)
 DestructionSim.Size = UDim2.new(1, 0, 0.733333349, 0)
+DestructionSim.Visible = false
 
 AutoSell.Name = "AutoSell"
 AutoSell.Parent = DestructionSim
@@ -321,9 +327,76 @@ ModBomb.TextScaled = true
 ModBomb.TextSize = 14.000
 ModBomb.TextWrapped = true
 
+RagdollEngFrame.Name = "RagdollEngFrame"
+RagdollEngFrame.Parent = MainFrame
+RagdollEngFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+RagdollEngFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+RagdollEngFrame.Position = UDim2.new(0, 0, 0.266666681, 0)
+RagdollEngFrame.Size = UDim2.new(1, 0, 0.733333349, 0)
+RagdollEngFrame.Visible = false
+
+Push.Name = "Push"
+Push.Parent = RagdollEngFrame
+Push.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Push.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Push.Size = UDim2.new(0.5, 0, 0.25, 0)
+Push.ZIndex = 2
+Push.Style = Enum.ButtonStyle.RobloxButton
+Push.Font = Enum.Font.SourceSans
+Push.Text = "Super push [off]"
+Push.TextColor3 = Color3.fromRGB(255, 255, 255)
+Push.TextScaled = true
+Push.TextSize = 14.000
+Push.TextWrapped = true
+
+Antirag.Name = "Antirag"
+Antirag.Parent = RagdollEngFrame
+Antirag.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Antirag.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Antirag.Position = UDim2.new(0.5, 0, 0, 0)
+Antirag.Size = UDim2.new(0.5, 0, 0.25, 0)
+Antirag.ZIndex = 2
+Antirag.Style = Enum.ButtonStyle.RobloxButton
+Antirag.Font = Enum.Font.SourceSans
+Antirag.Text = "Anti ragdoll [off]"
+Antirag.TextColor3 = Color3.fromRGB(255, 255, 255)
+Antirag.TextScaled = true
+Antirag.TextSize = 14.000
+Antirag.TextWrapped = true
+
+BombAll.Name = "BombAll"
+BombAll.Parent = RagdollEngFrame
+BombAll.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+BombAll.BorderColor3 = Color3.fromRGB(255, 255, 255)
+BombAll.Position = UDim2.new(0.5, 0, 0.369696975, 0)
+BombAll.Size = UDim2.new(0.5, 0, 0.25, 0)
+BombAll.ZIndex = 2
+BombAll.Style = Enum.ButtonStyle.RobloxButton
+BombAll.Font = Enum.Font.SourceSans
+BombAll.Text = "Bomb all [bomb]"
+BombAll.TextColor3 = Color3.fromRGB(255, 255, 255)
+BombAll.TextScaled = true
+BombAll.TextSize = 14.000
+BombAll.TextWrapped = true
+
+Bomb.Name = "Bomb"
+Bomb.Parent = RagdollEngFrame
+Bomb.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Bomb.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Bomb.Position = UDim2.new(0, 0, 0.369696975, 0)
+Bomb.Size = UDim2.new(0.5, 0, 0.25, 0)
+Bomb.ZIndex = 2
+Bomb.Style = Enum.ButtonStyle.RobloxButton
+Bomb.Font = Enum.Font.SourceSans
+Bomb.Text = "Bomb [player and bomb]"
+Bomb.TextColor3 = Color3.fromRGB(255, 255, 255)
+Bomb.TextScaled = true
+Bomb.TextSize = 14.000
+Bomb.TextWrapped = true
+
 -- Scripts:
 
-local function EEVUQ_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
+local function ZKHI_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
 	local script = Instance.new('LocalScript', NinjaSimFrame)
 
 	local function split(text, splitter)
@@ -544,8 +617,8 @@ local function EEVUQ_fake_script() -- NinjaSimFrame.NinjaFrameStuff
 		end
 	end)
 end
-coroutine.wrap(EEVUQ_fake_script)()
-local function UYYTY_fake_script() -- MainFrame.Selector 
+coroutine.wrap(ZKHI_fake_script)()
+local function KCIJXBL_fake_script() -- MainFrame.Selector 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	local mainframe = script.Parent
@@ -573,6 +646,11 @@ local function UYYTY_fake_script() -- MainFrame.Selector
 					mainframe.DestructionSim.Visible = true
 				elseif v.Name == "DestructionSimulator" then
 					mainframe.DestructionSim.Visible = false
+				end
+				if v.Name == selector.Parent.Name and v.Name == "RagdollEngine" then
+					mainframe.RagdollEngFrame.Visible = true
+				elseif v.Name == "RagdollEngine" then
+					mainframe.RagdollEngFrame.Visible = false
 				end
 			end)
 		end
@@ -641,8 +719,8 @@ local function UYYTY_fake_script() -- MainFrame.Selector
 	end
 	dragify(mainframe)
 end
-coroutine.wrap(UYYTY_fake_script)()
-local function XPIN_fake_script() -- DestructionSim.DestructSim 
+coroutine.wrap(KCIJXBL_fake_script)()
+local function ADJLIG_fake_script() -- DestructionSim.DestructSim 
 	local script = Instance.new('LocalScript', DestructionSim)
 
 	local frame = script.Parent
@@ -655,13 +733,11 @@ local function XPIN_fake_script() -- DestructionSim.DestructSim
 	as.MouseButton1Click:Connect(function()
 		if pressed == false then
 			pressed = true
-			as.Text = "Pressed"
 			while game:GetService("RunService").Stepped:Wait() do
-				pcall(function()
-					local Event = game:GetService("ReplicatedStorage").Remotes.sellBricks
-					Event:FireServer()
-				end)
+				local Event = game:GetService("ReplicatedStorage").Remotes.sellBricks
+				Event:FireServer()
 			end
+			as.Text = "Pressed"
 		end
 	end)
 	
@@ -689,7 +765,7 @@ local function XPIN_fake_script() -- DestructionSim.DestructSim
 		end
 	end)
 	
-	modbomb.MouseButton1Click:Connect(function()
+	modrocket.MouseButton1Click:Connect(function()
 		local rock = game.Players.LocalPlayer.Backpack:FindFirstChild"Launcher" or game.Players.LocalPlayer.Character:FindFirstChild"Launcher"
 		if rock then
 			rock = rock.Stats
@@ -704,7 +780,7 @@ local function XPIN_fake_script() -- DestructionSim.DestructSim
 		modscrip.ShotgunAmount = 0 -- spread thing max is 3
 	end)
 	
-	modrocket.MouseButton1Click:Connect(function()
+	modbomb.MouseButton1Click:Connect(function()
 		local bomb = game.Players.LocalPlayer.Backpack:FindFirstChild("Bomb") or game.Players.LocalPlayer.Character:FindFirstChild("Bomb")
 		if bomb then
 			bomb = bomb.Stats
@@ -715,4 +791,100 @@ local function XPIN_fake_script() -- DestructionSim.DestructSim
 		bomb.BlastForce =  458309834905
 	end)
 end
-coroutine.wrap(XPIN_fake_script)()
+coroutine.wrap(ADJLIG_fake_script)()
+local function LTTCR_fake_script() -- RagdollEngFrame.LocalScript 
+	local script = Instance.new('LocalScript', RagdollEngFrame)
+
+	local frame = script.Parent
+	local push = frame.Push
+	local bomb = frame.Bomb
+	local bomball = frame.BombAll
+	local antirag = frame.Antirag
+	local textbox = frame.Parent.TextBox
+	
+	
+	local function getplayer(plr)
+		plr = tostring(plr):lower()
+		if plr == "me" or plr == "" then
+			return game.Players.LocalPlayer.Name
+		end
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name:lower():match(plr) then
+				return v.Name
+			end
+		end
+	end
+	
+	
+	local pushing = false
+	push.MouseButton1Click:Connect(function()
+		pushing = not pushing
+		if pushing == true then
+			push.Text = "Super Push [on]"
+		else
+			push.Text = "Super Push [off]"
+		end
+		if pushing == true then
+			while pushing == true and game:GetService("RunService").Stepped:Wait() do
+				local Event = game.Players.LocalPlayer.Character:FindFirstChild("Push") or game.Players.LocalPlayer.Backpack:FindFirstChild("Push")
+				if Event then
+					Event = Event.PushEvent
+					Event:FireServer()
+				end
+			end
+		end
+	end)
+	
+	local norag = false
+	antirag.MouseButton1Click:Connect(function()
+		norag = not norag
+		if norag == true then
+			antirag.Text = "Anti ragdoll [on]"
+		else
+			antirag.Text = "Anti ragdoll [off]"
+		end
+		if norag == true then
+			while game:GetService"RunService".Stepped:Wait() and norag == true do
+				local bool_1 = false;
+				local Target = game:GetService("ReplicatedStorage").LocalRagdollEvent;
+				Target:Fire(bool_1);
+			end
+		end
+	end)
+	
+	bomb.MouseButton1Click:Connect(function()
+		local whotoattack = getplayer(textbox.Text)
+	
+	
+		local hrp = game.Players[getplayer(whotoattack)].Character:FindFirstChild"UpperTorso" or game.Players[getplayer(whotoattack)].Character:FindFirstChild("Torso") or game.Players[getplayer(whotoattack)].Character.HumanoidRootPart
+		local x = hrp.Position.X
+		local y = hrp.Position.Y
+		local z = hrp.Position.Z
+	
+		local userdata_1 = Vector3.new(game.Players.LocalPlayer.Character.Head.Position);
+		local userdata_2 = CFrame.new(x, y, z);
+		local Target = game:GetService("Players").LocalPlayer.Backpack.ImpulseGrenade.CreateGrenade;
+		Target:FireServer(userdata_1, userdata_2);
+	end)
+	
+	bomball.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			local whotoattack = getplayer(v.Name)
+	
+	
+			local hrp = game.Players[getplayer(whotoattack)].Character:FindFirstChild"UpperTorso" or game.Players[getplayer(whotoattack)].Character:FindFirstChild("Torso") or game.Players[getplayer(whotoattack)].Character.HumanoidRootPart
+			local x = hrp.Position.X
+			local y = hrp.Position.Y
+			local z = hrp.Position.Z
+	
+			local userdata_1 = Vector3.new(game.Players.LocalPlayer.Character.Head.Position);
+			local userdata_2 = CFrame.new(x, y, z);
+			local Target = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild"ImpulseGrenade" or game:GetService("Players").LocalPlayer.Character:FindFirstChild"ImpulseGrenade"
+			if Target  then
+				Target = Target.CreateGrenade
+				Target:FireServer(userdata_1, userdata_2);
+			end
+		end
+	end)
+end
+coroutine.wrap(LTTCR_fake_script)()
