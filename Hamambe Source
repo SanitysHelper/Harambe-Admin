@@ -21,6 +21,11 @@ local Mute = Instance.new("TextButton")
 local AntiKnockback = Instance.new("TextButton")
 local ReflectDamage = Instance.new("TextButton")
 local AutoFarm = Instance.new("TextButton")
+local DestructionSim = Instance.new("Frame")
+local AutoSell = Instance.new("TextButton")
+local BlowUpArea = Instance.new("TextButton")
+local ModRocket = Instance.new("TextButton")
+local ModBomb = Instance.new("TextButton")
 
 --Properties:
 
@@ -41,7 +46,7 @@ Title.Name = "Title"
 Title.Parent = MainFrame
 Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Title.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Title.Size = UDim2.new(0, 325, 0, 20)
+Title.Size = UDim2.new(1, 0, 0.088888891, 0)
 Title.Font = Enum.Font.SourceSans
 Title.Text = "Harambe Hub - DeleonSploit Compatible!"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -53,8 +58,8 @@ NinjaSimulator.Name = "NinjaSimulator"
 NinjaSimulator.Parent = MainFrame
 NinjaSimulator.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 NinjaSimulator.BorderColor3 = Color3.fromRGB(255, 255, 255)
-NinjaSimulator.Position = UDim2.new(0, 0, 0, 20)
-NinjaSimulator.Size = UDim2.new(0.200000003, 0, 0, 20)
+NinjaSimulator.Position = UDim2.new(0, 0, 0.088888891, 0)
+NinjaSimulator.Size = UDim2.new(0.200000003, 0, 0.088888891, 0)
 NinjaSimulator.Font = Enum.Font.SourceSans
 NinjaSimulator.Text = "Ninja Simulator"
 NinjaSimulator.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -66,8 +71,8 @@ DestructionSimulator.Name = "DestructionSimulator"
 DestructionSimulator.Parent = MainFrame
 DestructionSimulator.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 DestructionSimulator.BorderColor3 = Color3.fromRGB(255, 255, 255)
-DestructionSimulator.Position = UDim2.new(0, 65, 0, 20)
-DestructionSimulator.Size = UDim2.new(0.200000003, 0, 0, 20)
+DestructionSimulator.Position = UDim2.new(0.200000003, 0, 0.088888891, 0)
+DestructionSimulator.Size = UDim2.new(0.200000003, 0, 0.088888891, 0)
 DestructionSimulator.Font = Enum.Font.SourceSans
 DestructionSimulator.Text = "Destrustion Simulator"
 DestructionSimulator.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -79,8 +84,8 @@ Game1.Name = "Game1"
 Game1.Parent = MainFrame
 Game1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Game1.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Game1.Position = UDim2.new(0, 130, 0, 20)
-Game1.Size = UDim2.new(0.200000003, 0, 0, 20)
+Game1.Position = UDim2.new(0.400000006, 0, 0.088888891, 0)
+Game1.Size = UDim2.new(0.200000003, 0, 0.088888891, 0)
 Game1.Font = Enum.Font.SourceSans
 Game1.Text = "Game 1"
 Game1.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -92,8 +97,8 @@ Game2.Name = "Game2"
 Game2.Parent = MainFrame
 Game2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Game2.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Game2.Position = UDim2.new(0, 195, 0, 20)
-Game2.Size = UDim2.new(0.200000003, 0, 0, 20)
+Game2.Position = UDim2.new(0.600000024, 0, 0.088888891, 0)
+Game2.Size = UDim2.new(0.200000003, 0, 0.088888891, 0)
 Game2.Font = Enum.Font.SourceSans
 Game2.Text = "Game 2"
 Game2.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -105,8 +110,8 @@ Misc.Name = "Misc"
 Misc.Parent = MainFrame
 Misc.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Misc.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Misc.Position = UDim2.new(0, 260, 0, 20)
-Misc.Size = UDim2.new(0.200000003, 0, 0, 20)
+Misc.Position = UDim2.new(0.800000012, 0, 0.088888891, 0)
+Misc.Size = UDim2.new(0.200000003, 0, 0.088888891, 0)
 Misc.Font = Enum.Font.SourceSans
 Misc.Text = "Misc"
 Misc.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -117,9 +122,10 @@ Misc.TextWrapped = true
 TextBox.Parent = MainFrame
 TextBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 TextBox.BorderColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.Position = UDim2.new(0, 0, 0, 40)
-TextBox.Size = UDim2.new(0, 325, 0, 20)
+TextBox.Position = UDim2.new(0, 0, 0.177777782, 0)
+TextBox.Size = UDim2.new(1, 0, 0.088888891, 0)
 TextBox.Font = Enum.Font.SourceSans
+TextBox.PlaceholderText = "Text/Arguments go here"
 TextBox.Text = ""
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.TextScaled = true
@@ -130,8 +136,9 @@ NinjaSimFrame.Name = "NinjaSimFrame"
 NinjaSimFrame.Parent = MainFrame
 NinjaSimFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 NinjaSimFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
-NinjaSimFrame.Position = UDim2.new(0, 0, 0, 60)
-NinjaSimFrame.Size = UDim2.new(0, 325, 0, 165)
+NinjaSimFrame.Position = UDim2.new(0, 0, 0.266666681, 0)
+NinjaSimFrame.Size = UDim2.new(1, 0, 0.733333349, 0)
+NinjaSimFrame.Visible = false
 
 Kill.Name = "Kill"
 Kill.Parent = NinjaSimFrame
@@ -143,7 +150,9 @@ Kill.Style = Enum.ButtonStyle.RobloxButton
 Kill.Font = Enum.Font.SourceSans
 Kill.Text = "Kill [Player]"
 Kill.TextColor3 = Color3.fromRGB(255, 255, 255)
+Kill.TextScaled = true
 Kill.TextSize = 14.000
+Kill.TextWrapped = true
 
 AntiSmoke.Name = "AntiSmoke"
 AntiSmoke.Parent = NinjaSimFrame
@@ -156,7 +165,9 @@ AntiSmoke.Style = Enum.ButtonStyle.RobloxButton
 AntiSmoke.Font = Enum.Font.SourceSans
 AntiSmoke.Text = "Anti smoke bombs"
 AntiSmoke.TextColor3 = Color3.fromRGB(255, 255, 255)
+AntiSmoke.TextScaled = true
 AntiSmoke.TextSize = 14.000
+AntiSmoke.TextWrapped = true
 
 Givetools.Name = "Givetools"
 Givetools.Parent = NinjaSimFrame
@@ -168,7 +179,9 @@ Givetools.Style = Enum.ButtonStyle.RobloxButton
 Givetools.Font = Enum.Font.SourceSans
 Givetools.Text = "Robux"
 Givetools.TextColor3 = Color3.fromRGB(255, 255, 255)
+Givetools.TextScaled = true
 Givetools.TextSize = 14.000
+Givetools.TextWrapped = true
 
 Knockback.Name = "Knockback"
 Knockback.Parent = NinjaSimFrame
@@ -180,7 +193,9 @@ Knockback.Style = Enum.ButtonStyle.RobloxButton
 Knockback.Font = Enum.Font.SourceSans
 Knockback.Text = "Knockback [Player], [Force], [Time]"
 Knockback.TextColor3 = Color3.fromRGB(255, 255, 255)
+Knockback.TextScaled = true
 Knockback.TextSize = 12.000
+Knockback.TextWrapped = true
 
 Mute.Name = "Mute"
 Mute.Parent = NinjaSimFrame
@@ -193,7 +208,9 @@ Mute.Style = Enum.ButtonStyle.RobloxButton
 Mute.Font = Enum.Font.SourceSans
 Mute.Text = "Mute flute [Player]"
 Mute.TextColor3 = Color3.fromRGB(255, 255, 255)
+Mute.TextScaled = true
 Mute.TextSize = 14.000
+Mute.TextWrapped = true
 
 AntiKnockback.Name = "AntiKnockback"
 AntiKnockback.Parent = NinjaSimFrame
@@ -206,7 +223,9 @@ AntiKnockback.Style = Enum.ButtonStyle.RobloxButton
 AntiKnockback.Font = Enum.Font.SourceSans
 AntiKnockback.Text = "Anti knockback"
 AntiKnockback.TextColor3 = Color3.fromRGB(255, 255, 255)
+AntiKnockback.TextScaled = true
 AntiKnockback.TextSize = 14.000
+AntiKnockback.TextWrapped = true
 
 ReflectDamage.Name = "ReflectDamage"
 ReflectDamage.Parent = NinjaSimFrame
@@ -218,7 +237,9 @@ ReflectDamage.Style = Enum.ButtonStyle.RobloxButton
 ReflectDamage.Font = Enum.Font.SourceSans
 ReflectDamage.Text = "Reflect damage [Player]"
 ReflectDamage.TextColor3 = Color3.fromRGB(255, 255, 255)
+ReflectDamage.TextScaled = true
 ReflectDamage.TextSize = 14.000
+ReflectDamage.TextWrapped = true
 
 AutoFarm.Name = "AutoFarm"
 AutoFarm.Parent = NinjaSimFrame
@@ -230,11 +251,79 @@ AutoFarm.Style = Enum.ButtonStyle.RobloxButton
 AutoFarm.Font = Enum.Font.SourceSans
 AutoFarm.Text = "Autofarm use in dead servers"
 AutoFarm.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoFarm.TextScaled = true
 AutoFarm.TextSize = 14.000
+AutoFarm.TextWrapped = true
+
+DestructionSim.Name = "DestructionSim"
+DestructionSim.Parent = MainFrame
+DestructionSim.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+DestructionSim.BorderColor3 = Color3.fromRGB(255, 255, 255)
+DestructionSim.Position = UDim2.new(0, 0, 0.266666681, 0)
+DestructionSim.Size = UDim2.new(1, 0, 0.733333349, 0)
+
+AutoSell.Name = "AutoSell"
+AutoSell.Parent = DestructionSim
+AutoSell.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+AutoSell.BorderColor3 = Color3.fromRGB(255, 255, 255)
+AutoSell.Size = UDim2.new(0.5, 0, 0.25, 0)
+AutoSell.ZIndex = 2
+AutoSell.Style = Enum.ButtonStyle.RobloxButton
+AutoSell.Font = Enum.Font.SourceSans
+AutoSell.Text = "Auto sell"
+AutoSell.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoSell.TextScaled = true
+AutoSell.TextSize = 14.000
+AutoSell.TextWrapped = true
+
+BlowUpArea.Name = "BlowUpArea"
+BlowUpArea.Parent = DestructionSim
+BlowUpArea.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+BlowUpArea.BorderColor3 = Color3.fromRGB(255, 255, 255)
+BlowUpArea.Position = UDim2.new(0.5, 0, 0, 0)
+BlowUpArea.Size = UDim2.new(0.5, 0, 0.25, 0)
+BlowUpArea.ZIndex = 2
+BlowUpArea.Style = Enum.ButtonStyle.RobloxButton
+BlowUpArea.Font = Enum.Font.SourceSans
+BlowUpArea.Text = "Blow up area [Number ]"
+BlowUpArea.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlowUpArea.TextScaled = true
+BlowUpArea.TextSize = 14.000
+BlowUpArea.TextWrapped = true
+
+ModRocket.Name = "ModRocket"
+ModRocket.Parent = DestructionSim
+ModRocket.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ModRocket.BorderColor3 = Color3.fromRGB(255, 255, 255)
+ModRocket.Position = UDim2.new(0.5, 0, 0.5, 0)
+ModRocket.Size = UDim2.new(0.5, 0, 0.25, 0)
+ModRocket.ZIndex = 2
+ModRocket.Style = Enum.ButtonStyle.RobloxButton
+ModRocket.Font = Enum.Font.SourceSans
+ModRocket.Text = "Mod rocket"
+ModRocket.TextColor3 = Color3.fromRGB(255, 255, 255)
+ModRocket.TextScaled = true
+ModRocket.TextSize = 14.000
+ModRocket.TextWrapped = true
+
+ModBomb.Name = "ModBomb"
+ModBomb.Parent = DestructionSim
+ModBomb.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ModBomb.BorderColor3 = Color3.fromRGB(255, 255, 255)
+ModBomb.Position = UDim2.new(0, 0, 0.5, 0)
+ModBomb.Size = UDim2.new(0.5, 0, 0.25, 0)
+ModBomb.ZIndex = 2
+ModBomb.Style = Enum.ButtonStyle.RobloxButton
+ModBomb.Font = Enum.Font.SourceSans
+ModBomb.Text = "Mod bomb"
+ModBomb.TextColor3 = Color3.fromRGB(255, 255, 255)
+ModBomb.TextScaled = true
+ModBomb.TextSize = 14.000
+ModBomb.TextWrapped = true
 
 -- Scripts:
 
-local function YJCME_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
+local function EEVUQ_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
 	local script = Instance.new('LocalScript', NinjaSimFrame)
 
 	local function split(text, splitter)
@@ -267,16 +356,6 @@ local function YJCME_fake_script() -- NinjaSimFrame.NinjaFrameStuff
 	local mute = frame.Mute
 	local autofarm = frame.AutoFarm
 	local textbox = frame.Parent.TextBox
-	
-	
-	tab.Changed:Connect(function()
-		game:GetService("RunService").Stepped:Wait()
-		if tab:FindFirstChild("Selected") then
-			frame.Visible = true
-		else
-			frame.Visible = false
-		end
-	end)
 	
 	local function getplayer(plr)
 		plr = tostring(plr):lower()
@@ -465,25 +544,63 @@ local function YJCME_fake_script() -- NinjaSimFrame.NinjaFrameStuff
 		end
 	end)
 end
-coroutine.wrap(YJCME_fake_script)()
-local function VZGFD_fake_script() -- MainFrame.Selector 
+coroutine.wrap(EEVUQ_fake_script)()
+local function UYYTY_fake_script() -- MainFrame.Selector 
 	local script = Instance.new('LocalScript', MainFrame)
 
-	local selected = script.Parent.NinjaSimulator
+	local mainframe = script.Parent
+	local selected = mainframe.NinjaSimulator
 	local selector = Instance.new("LocalScript",selected)
 	selector.Name = "Selected"
-	for i,v in pairs(script.Parent:GetChildren()) do
+	for i,v in pairs(mainframe:GetChildren()) do
 		if v:IsA("TextButton") then
 			v.MouseButton1Click:Connect(function()
 				if v ~= selected then
 					selected.BackgroundColor3 = Color3.new(0,0,0)
 					selected = v
 					selector.Parent = v
-					v.BackgroundColor3 = Color3.fromRGB(60,60,60)
+					v.BackgroundColor3 = Color3.fromRGB(60,60,60)				
 				end	
+			end)
+			v.Changed:Connect(function()
+				game:GetService("RunService").Stepped:Wait()
+				if v.Name == selector.Parent.Name and v.Name == "NinjaSimulator" then
+					mainframe.NinjaSimFrame.Visible = true
+				elseif v.Name == "NinjaSimulator" then
+					mainframe.NinjaSimFrame.Visible = false
+				end
+				if v.Name == selector.Parent.Name and v.Name == "DestructionSimulator" then
+					mainframe.DestructionSim.Visible = true
+				elseif v.Name == "DestructionSimulator" then
+					mainframe.DestructionSim.Visible = false
+				end
 			end)
 		end
 	end
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	local UIS = game:GetService("UserInputService")
 	local function dragify(Frame)
@@ -522,6 +639,78 @@ local function VZGFD_fake_script() -- MainFrame.Selector
 			end
 		end)
 	end
-	dragify(script.Parent)
+	dragify(mainframe)
 end
-coroutine.wrap(VZGFD_fake_script)()
+coroutine.wrap(UYYTY_fake_script)()
+local function XPIN_fake_script() -- DestructionSim.DestructSim 
+	local script = Instance.new('LocalScript', DestructionSim)
+
+	local frame = script.Parent
+	local as = frame.AutoSell
+	local blowuparea = frame.BlowUpArea
+	local modrocket = frame.ModRocket
+	local modbomb = frame.ModBomb
+	local textbox = frame.Parent.TextBox
+	local pressed = false
+	as.MouseButton1Click:Connect(function()
+		if pressed == false then
+			pressed = true
+			while game:GetService("RunService").Stepped:Wait() do
+				local Event = game:GetService("ReplicatedStorage").Remotes.sellBricks
+				Event:FireServer()
+			end
+			as.Text = "Pressed"
+		end
+	end)
+	
+	blowuparea.MouseButton1Click:Connect(function()
+		local areanumber = textbox.Text
+	
+		pcall(function()
+			game.Players.LocalPlayer.Backpack.Launcher.Parent = game.Players.LocalPlayer.Character
+		end)
+		local function blowup(part)
+			local A_1 = 16087986401691.1961
+			local A_2 = game:GetService("Workspace")[game.Players.LocalPlayer.Name].Launcher.Stats
+			local A_3 = part.Position
+			local A_4 = game:GetService("Workspace")[game.Players.LocalPlayer.Name].Launcher.Assets.Rocket.Boom
+			local Event = game:GetService("ReplicatedStorage").Remotes.explodeRocket
+			Event:FireServer(A_1, A_2, A_3, A_4)
+		end
+		for i,v in pairs(workspace.Areas["Area"..areanumber]:GetDescendants()) do
+			if v:IsA("BasePart") and v.Anchored == true then
+				pcall(function()
+					blowup(v)
+				end)
+				game:GetService("RunService").Stepped:Wait()
+			end
+		end
+	end)
+	
+	modbomb.MouseButton1Click:Connect(function()
+		local rock = game.Players.LocalPlayer.Backpack:FindFirstChild"Launcher" or game.Players.LocalPlayer.Character:FindFirstChild"Launcher"
+		if rock then
+			rock = rock.Stats
+		end
+		local modscrip = require(rock)
+		modscrip.Cooldown = 0 -- the cooldown duh
+		modscrip.RocketSpeed = 5 -- rocket speed
+		modscrip.Bursts = 5 -- bursts like a burst rifle
+		modscrip.BurstWait = 0 -- cooldown per burst shot
+		modscrip.BlastForce = 1000000000 -- idk this
+		modscrip.BlastRadius = 500000000 -- idk this
+		modscrip.ShotgunAmount = 0 -- spread thing max is 3
+	end)
+	
+	modrocket.MouseButton1Click:Connect(function()
+		local bomb = game.Players.LocalPlayer.Backpack:FindFirstChild("Bomb") or game.Players.LocalPlayer.Character:FindFirstChild("Bomb")
+		if bomb then
+			bomb = bomb.Stats
+			bomb = require(bomb)
+		end
+		bomb.Cooldown = 0
+		bomb.BlastRadius = 458309834905
+		bomb.BlastForce =  458309834905
+	end)
+end
+coroutine.wrap(XPIN_fake_script)()
