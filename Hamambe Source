@@ -12,15 +12,6 @@ local RagdollEngine = Instance.new("TextButton")
 local Game2 = Instance.new("TextButton")
 local Misc = Instance.new("TextButton")
 local TextBox = Instance.new("TextBox")
-local NinjaSimFrame = Instance.new("Frame")
-local Kill = Instance.new("TextButton")
-local AntiSmoke = Instance.new("TextButton")
-local Givetools = Instance.new("TextButton")
-local Knockback = Instance.new("TextButton")
-local Mute = Instance.new("TextButton")
-local AntiKnockback = Instance.new("TextButton")
-local ReflectDamage = Instance.new("TextButton")
-local AutoFarm = Instance.new("TextButton")
 local DestructionSim = Instance.new("Frame")
 local AutoSell = Instance.new("TextButton")
 local BlowUpArea = Instance.new("TextButton")
@@ -40,6 +31,19 @@ local JP = Instance.new("TextButton")
 local Noclip = Instance.new("TextButton")
 local AntiLag = Instance.new("TextButton")
 local WalkSpeed = Instance.new("TextButton")
+local NinjaSimFrame = Instance.new("ScrollingFrame")
+local AntiKnockback = Instance.new("TextButton")
+local AntiSmoke = Instance.new("TextButton")
+local AutoFarm = Instance.new("TextButton")
+local BlockTools = Instance.new("TextButton")
+local Kill = Instance.new("TextButton")
+local Knockback = Instance.new("TextButton")
+local Mute = Instance.new("TextButton")
+local ReflectDamage = Instance.new("TextButton")
+local ModSwordSpeed = Instance.new("TextButton")
+local ModSwordKnockback = Instance.new("TextButton")
+local ModSwordTime = Instance.new("TextButton")
+local Crash = Instance.new("TextButton")
 
 --Properties:
 
@@ -145,129 +149,6 @@ TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.TextScaled = true
 TextBox.TextSize = 14.000
 TextBox.TextWrapped = true
-
-NinjaSimFrame.Name = "NinjaSimFrame"
-NinjaSimFrame.Parent = MainFrame
-NinjaSimFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-NinjaSimFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
-NinjaSimFrame.Position = UDim2.new(0, 0, 0.266666681, 0)
-NinjaSimFrame.Size = UDim2.new(1, 0, 0.733333349, 0)
-NinjaSimFrame.Visible = false
-
-Kill.Name = "Kill"
-Kill.Parent = NinjaSimFrame
-Kill.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Kill.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Kill.Size = UDim2.new(0.5, 0, 0.25, 0)
-Kill.ZIndex = 2
-Kill.Style = Enum.ButtonStyle.RobloxButton
-Kill.Font = Enum.Font.SourceSans
-Kill.Text = "Kill [Player]"
-Kill.TextColor3 = Color3.fromRGB(255, 255, 255)
-Kill.TextScaled = true
-Kill.TextSize = 14.000
-Kill.TextWrapped = true
-
-AntiSmoke.Name = "AntiSmoke"
-AntiSmoke.Parent = NinjaSimFrame
-AntiSmoke.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-AntiSmoke.BorderColor3 = Color3.fromRGB(255, 255, 255)
-AntiSmoke.Position = UDim2.new(0, 0, 0.25, 0)
-AntiSmoke.Size = UDim2.new(0.5, 0, 0.25, 0)
-AntiSmoke.ZIndex = 2
-AntiSmoke.Style = Enum.ButtonStyle.RobloxButton
-AntiSmoke.Font = Enum.Font.SourceSans
-AntiSmoke.Text = "Anti smoke bombs"
-AntiSmoke.TextColor3 = Color3.fromRGB(255, 255, 255)
-AntiSmoke.TextScaled = true
-AntiSmoke.TextSize = 14.000
-AntiSmoke.TextWrapped = true
-
-Givetools.Name = "Givetools"
-Givetools.Parent = NinjaSimFrame
-Givetools.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Givetools.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Givetools.Position = UDim2.new(0.5, 0, 0.25, 0)
-Givetools.Size = UDim2.new(0.5, 0, 0.25, 0)
-Givetools.Style = Enum.ButtonStyle.RobloxButton
-Givetools.Font = Enum.Font.SourceSans
-Givetools.Text = "Robux"
-Givetools.TextColor3 = Color3.fromRGB(255, 255, 255)
-Givetools.TextScaled = true
-Givetools.TextSize = 14.000
-Givetools.TextWrapped = true
-
-Knockback.Name = "Knockback"
-Knockback.Parent = NinjaSimFrame
-Knockback.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Knockback.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Knockback.Position = UDim2.new(0.5, 0, 0, 0)
-Knockback.Size = UDim2.new(0.5, 0, 0.25, 0)
-Knockback.Style = Enum.ButtonStyle.RobloxButton
-Knockback.Font = Enum.Font.SourceSans
-Knockback.Text = "Knockback [Player], [Force], [Time]"
-Knockback.TextColor3 = Color3.fromRGB(255, 255, 255)
-Knockback.TextScaled = true
-Knockback.TextSize = 12.000
-Knockback.TextWrapped = true
-
-Mute.Name = "Mute"
-Mute.Parent = NinjaSimFrame
-Mute.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Mute.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Mute.Position = UDim2.new(0, 0, 0.75, 0)
-Mute.Size = UDim2.new(0.5, 0, 0.25, 0)
-Mute.ZIndex = 2
-Mute.Style = Enum.ButtonStyle.RobloxButton
-Mute.Font = Enum.Font.SourceSans
-Mute.Text = "Mute flute [Player]"
-Mute.TextColor3 = Color3.fromRGB(255, 255, 255)
-Mute.TextScaled = true
-Mute.TextSize = 14.000
-Mute.TextWrapped = true
-
-AntiKnockback.Name = "AntiKnockback"
-AntiKnockback.Parent = NinjaSimFrame
-AntiKnockback.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-AntiKnockback.BorderColor3 = Color3.fromRGB(255, 255, 255)
-AntiKnockback.Position = UDim2.new(0, 0, 0.5, 0)
-AntiKnockback.Size = UDim2.new(0.5, 0, 0.25, 0)
-AntiKnockback.ZIndex = 2
-AntiKnockback.Style = Enum.ButtonStyle.RobloxButton
-AntiKnockback.Font = Enum.Font.SourceSans
-AntiKnockback.Text = "Anti knockback"
-AntiKnockback.TextColor3 = Color3.fromRGB(255, 255, 255)
-AntiKnockback.TextScaled = true
-AntiKnockback.TextSize = 14.000
-AntiKnockback.TextWrapped = true
-
-ReflectDamage.Name = "ReflectDamage"
-ReflectDamage.Parent = NinjaSimFrame
-ReflectDamage.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ReflectDamage.BorderColor3 = Color3.fromRGB(255, 255, 255)
-ReflectDamage.Position = UDim2.new(0.5, 0, 0.5, 0)
-ReflectDamage.Size = UDim2.new(0.5, 0, 0.25, 0)
-ReflectDamage.Style = Enum.ButtonStyle.RobloxButton
-ReflectDamage.Font = Enum.Font.SourceSans
-ReflectDamage.Text = "Reflect damage [Player]"
-ReflectDamage.TextColor3 = Color3.fromRGB(255, 255, 255)
-ReflectDamage.TextScaled = true
-ReflectDamage.TextSize = 14.000
-ReflectDamage.TextWrapped = true
-
-AutoFarm.Name = "AutoFarm"
-AutoFarm.Parent = NinjaSimFrame
-AutoFarm.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-AutoFarm.BorderColor3 = Color3.fromRGB(255, 255, 255)
-AutoFarm.Position = UDim2.new(0.5, 0, 0.75, 0)
-AutoFarm.Size = UDim2.new(0.5, 0, 0.25, 0)
-AutoFarm.Style = Enum.ButtonStyle.RobloxButton
-AutoFarm.Font = Enum.Font.SourceSans
-AutoFarm.Text = "Autofarm use in dead servers"
-AutoFarm.TextColor3 = Color3.fromRGB(255, 255, 255)
-AutoFarm.TextScaled = true
-AutoFarm.TextSize = 14.000
-AutoFarm.TextWrapped = true
 
 DestructionSim.Name = "DestructionSim"
 DestructionSim.Parent = MainFrame
@@ -409,6 +290,7 @@ MiscFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MiscFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
 MiscFrame.Position = UDim2.new(0, 0, 0.266666681, 0)
 MiscFrame.Size = UDim2.new(1, 0, 0.733333349, 0)
+MiscFrame.Visible = false
 
 Fly.Name = "Fly"
 Fly.Parent = MiscFrame
@@ -529,237 +411,195 @@ WalkSpeed.TextScaled = true
 WalkSpeed.TextSize = 14.000
 WalkSpeed.TextWrapped = true
 
+NinjaSimFrame.Name = "NinjaSimFrame"
+NinjaSimFrame.Parent = MainFrame
+NinjaSimFrame.Active = true
+NinjaSimFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+NinjaSimFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+NinjaSimFrame.Position = UDim2.new(0, 0, 0.266666681, 0)
+NinjaSimFrame.Size = UDim2.new(1, 0, 0.733333349, 0)
+NinjaSimFrame.BottomImage = "rbxassetid://5903324492"
+NinjaSimFrame.CanvasSize = UDim2.new(0, 0, 1.25, 0)
+NinjaSimFrame.MidImage = "rbxassetid://5903324492"
+NinjaSimFrame.ScrollBarThickness = 0
+NinjaSimFrame.TopImage = "rbxassetid://5903324492"
+
+AntiKnockback.Name = "AntiKnockback"
+AntiKnockback.Parent = NinjaSimFrame
+AntiKnockback.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+AntiKnockback.BorderColor3 = Color3.fromRGB(255, 255, 255)
+AntiKnockback.Position = UDim2.new(0, 0, 0, 82)
+AntiKnockback.Size = UDim2.new(0, 162, 0, 41)
+AntiKnockback.ZIndex = 2
+AntiKnockback.Style = Enum.ButtonStyle.RobloxButton
+AntiKnockback.Font = Enum.Font.SourceSans
+AntiKnockback.Text = "Anti knockback"
+AntiKnockback.TextColor3 = Color3.fromRGB(255, 255, 255)
+AntiKnockback.TextScaled = true
+AntiKnockback.TextSize = 14.000
+AntiKnockback.TextWrapped = true
+
+AntiSmoke.Name = "AntiSmoke"
+AntiSmoke.Parent = NinjaSimFrame
+AntiSmoke.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+AntiSmoke.BorderColor3 = Color3.fromRGB(255, 255, 255)
+AntiSmoke.Position = UDim2.new(0, 0, 0, 41)
+AntiSmoke.Size = UDim2.new(0, 162, 0, 41)
+AntiSmoke.ZIndex = 2
+AntiSmoke.Style = Enum.ButtonStyle.RobloxButton
+AntiSmoke.Font = Enum.Font.SourceSans
+AntiSmoke.Text = "Anti smoke bombs"
+AntiSmoke.TextColor3 = Color3.fromRGB(255, 255, 255)
+AntiSmoke.TextScaled = true
+AntiSmoke.TextSize = 14.000
+AntiSmoke.TextWrapped = true
+
+AutoFarm.Name = "AutoFarm"
+AutoFarm.Parent = NinjaSimFrame
+AutoFarm.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+AutoFarm.BorderColor3 = Color3.fromRGB(255, 255, 255)
+AutoFarm.Position = UDim2.new(0, 162, 0, 123)
+AutoFarm.Size = UDim2.new(0, 162, 0, 41)
+AutoFarm.Style = Enum.ButtonStyle.RobloxButton
+AutoFarm.Font = Enum.Font.SourceSans
+AutoFarm.Text = "Autofarm use in dead servers"
+AutoFarm.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoFarm.TextScaled = true
+AutoFarm.TextSize = 14.000
+AutoFarm.TextWrapped = true
+
+BlockTools.Name = "BlockTools"
+BlockTools.Parent = NinjaSimFrame
+BlockTools.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+BlockTools.BorderColor3 = Color3.fromRGB(255, 255, 255)
+BlockTools.Position = UDim2.new(0, 162, 0, 41)
+BlockTools.Size = UDim2.new(0, 162, 0, 41)
+BlockTools.Style = Enum.ButtonStyle.RobloxButton
+BlockTools.Font = Enum.Font.SourceSans
+BlockTools.Text = "Stickify"
+BlockTools.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlockTools.TextScaled = true
+BlockTools.TextSize = 14.000
+BlockTools.TextWrapped = true
+
+Kill.Name = "Kill"
+Kill.Parent = NinjaSimFrame
+Kill.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Kill.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Kill.Size = UDim2.new(0, 162, 0, 41)
+Kill.ZIndex = 2
+Kill.Style = Enum.ButtonStyle.RobloxButton
+Kill.Font = Enum.Font.SourceSans
+Kill.Text = "Kill [Player]"
+Kill.TextColor3 = Color3.fromRGB(255, 255, 255)
+Kill.TextScaled = true
+Kill.TextSize = 14.000
+Kill.TextWrapped = true
+
+Knockback.Name = "Knockback"
+Knockback.Parent = NinjaSimFrame
+Knockback.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Knockback.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Knockback.Position = UDim2.new(0, 162, 0, 0)
+Knockback.Size = UDim2.new(0, 162, 0, 41)
+Knockback.Style = Enum.ButtonStyle.RobloxButton
+Knockback.Font = Enum.Font.SourceSans
+Knockback.Text = "Knockback [Player], [Force], [Time]"
+Knockback.TextColor3 = Color3.fromRGB(255, 255, 255)
+Knockback.TextScaled = true
+Knockback.TextSize = 12.000
+Knockback.TextWrapped = true
+
+Mute.Name = "Mute"
+Mute.Parent = NinjaSimFrame
+Mute.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Mute.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Mute.Position = UDim2.new(0, 0, 0, 123)
+Mute.Size = UDim2.new(0, 162, 0, 41)
+Mute.ZIndex = 2
+Mute.Style = Enum.ButtonStyle.RobloxButton
+Mute.Font = Enum.Font.SourceSans
+Mute.Text = "Mute flute [Player]"
+Mute.TextColor3 = Color3.fromRGB(255, 255, 255)
+Mute.TextScaled = true
+Mute.TextSize = 14.000
+Mute.TextWrapped = true
+
+ReflectDamage.Name = "ReflectDamage"
+ReflectDamage.Parent = NinjaSimFrame
+ReflectDamage.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ReflectDamage.BorderColor3 = Color3.fromRGB(255, 255, 255)
+ReflectDamage.Position = UDim2.new(0, 162, 0, 82)
+ReflectDamage.Size = UDim2.new(0, 162, 0, 41)
+ReflectDamage.Style = Enum.ButtonStyle.RobloxButton
+ReflectDamage.Font = Enum.Font.SourceSans
+ReflectDamage.Text = "Reflect damage [Player]"
+ReflectDamage.TextColor3 = Color3.fromRGB(255, 255, 255)
+ReflectDamage.TextScaled = true
+ReflectDamage.TextSize = 14.000
+ReflectDamage.TextWrapped = true
+
+ModSwordSpeed.Name = "ModSwordSpeed"
+ModSwordSpeed.Parent = NinjaSimFrame
+ModSwordSpeed.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ModSwordSpeed.BorderColor3 = Color3.fromRGB(255, 255, 255)
+ModSwordSpeed.Position = UDim2.new(0, 0, 0, 164)
+ModSwordSpeed.Size = UDim2.new(0, 162, 0, 41)
+ModSwordSpeed.ZIndex = 2
+ModSwordSpeed.Style = Enum.ButtonStyle.RobloxButton
+ModSwordSpeed.Font = Enum.Font.SourceSans
+ModSwordSpeed.Text = "Mod sword speed [number]"
+ModSwordSpeed.TextColor3 = Color3.fromRGB(255, 255, 255)
+ModSwordSpeed.TextScaled = true
+ModSwordSpeed.TextSize = 14.000
+ModSwordSpeed.TextWrapped = true
+
+ModSwordKnockback.Name = "ModSwordKnockback"
+ModSwordKnockback.Parent = NinjaSimFrame
+ModSwordKnockback.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ModSwordKnockback.BorderColor3 = Color3.fromRGB(255, 255, 255)
+ModSwordKnockback.Position = UDim2.new(0, 162, 0, 164)
+ModSwordKnockback.Size = UDim2.new(0, 162, 0, 41)
+ModSwordKnockback.Style = Enum.ButtonStyle.RobloxButton
+ModSwordKnockback.Font = Enum.Font.SourceSans
+ModSwordKnockback.Text = "Mod sword knockback [number]"
+ModSwordKnockback.TextColor3 = Color3.fromRGB(255, 255, 255)
+ModSwordKnockback.TextScaled = true
+ModSwordKnockback.TextSize = 14.000
+ModSwordKnockback.TextWrapped = true
+
+ModSwordTime.Name = "ModSwordTime"
+ModSwordTime.Parent = NinjaSimFrame
+ModSwordTime.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ModSwordTime.BorderColor3 = Color3.fromRGB(255, 255, 255)
+ModSwordTime.Position = UDim2.new(0, 0, 0, 205)
+ModSwordTime.Size = UDim2.new(0, 162, 0, 41)
+ModSwordTime.ZIndex = 2
+ModSwordTime.Style = Enum.ButtonStyle.RobloxButton
+ModSwordTime.Font = Enum.Font.SourceSans
+ModSwordTime.Text = "Mod sword air time [number]"
+ModSwordTime.TextColor3 = Color3.fromRGB(255, 255, 255)
+ModSwordTime.TextScaled = true
+ModSwordTime.TextSize = 14.000
+ModSwordTime.TextWrapped = true
+
+Crash.Name = "Crash"
+Crash.Parent = NinjaSimFrame
+Crash.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Crash.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Crash.Position = UDim2.new(0, 162, 0, 205)
+Crash.Size = UDim2.new(0, 162, 0, 41)
+Crash.Style = Enum.ButtonStyle.RobloxButton
+Crash.Font = Enum.Font.SourceSans
+Crash.Text = "Crash"
+Crash.TextColor3 = Color3.fromRGB(255, 255, 255)
+Crash.TextScaled = true
+Crash.TextSize = 14.000
+Crash.TextWrapped = true
+
 -- Scripts:
 
-local function LRXI_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
-	local script = Instance.new('LocalScript', NinjaSimFrame)
-
-	local function split(text, splitter)
-		text = text..splitter
-		local returning = {}
-		local returningtxt = ""
-		for i = 1,#text do
-			if text:sub(i,i) ~= splitter and splitter ~= "" then
-				returningtxt = returningtxt..text:sub(i,i)
-			else
-				if splitter == "" then
-					returning[#returning+1] = text:sub(i,i)
-				else
-					returning[#returning+1] = returningtxt
-				end
-				returningtxt = ""
-			end
-		end
-		return returning
-	end
-	
-	local frame = script.Parent
-	local tab = script.Parent.Parent.NinjaSimulator
-	local antismoke = frame.AntiSmoke
-	local killbutton = frame.Kill
-	local knockback = frame.Knockback
-	local antiknock = frame.AntiKnockback
-	local givetools = frame.Givetools
-	local reflectdamage = frame.ReflectDamage
-	local mute = frame.Mute
-	local autofarm = frame.AutoFarm
-	local textbox = frame.Parent.TextBox
-	
-	local function getplayer(plr)
-		plr = tostring(plr):lower()
-		if plr == "me" or plr == "" then
-			return game.Players.LocalPlayer.Name
-		end
-		for i,v in pairs(game.Players:GetPlayers()) do
-			if v.Name:lower():match(plr) then
-				return v.Name
-			end
-		end
-	end
-	
-	
-	local antismokeclicked = false
-	antismoke.MouseButton1Click:Connect(function()
-		if antismokeclicked == false then
-			antismokeclicked = true
-			game.Players.LocalPlayer.PlayerGui.ChildAdded:Connect(function(thing)
-				game:GetService("RunService").Stepped:Wait()
-				if thing.Name == "SmokeScreen" then
-					thing:Destroy()
-				end
-			end)
-			antismoke.Text = "Used"
-		end
-	end)
-	
-	killbutton.MouseButton1Click:Connect(function()
-		local target = getplayer(textbox.Text)
-		function damage(plr)
-			if plr then
-				local A_1 = game.Players[plr].Character.Humanoid
-				local A_2 = "spirit"
-				local Event = game:GetService("ReplicatedStorage").Remotes.Damage
-				Event:InvokeServer(A_1, A_2)
-			end
-		end
-	
-		if target then
-			repeat
-				game:GetService("RunService").Stepped:Wait()
-				spawn(function()
-					pcall(function()
-						damage(target)
-					end)
-				end)
-			until not game.Players:FindFirstChild(target) or game.Players[target].Character.Humanoid.Health <= 0
-		end
-	end)
-	
-	antiknock.MouseButton1Click:Connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.ChildAdded:Connect(function(part)
-			game:GetService("RunService").Stepped:Wait()
-			if part:IsA("BodyVelocity") then
-				part:Destroy()
-			end
-		end)
-	end)
-	
-	givetools.MouseButton1Click:Connect(function()
-	
-	end)
-	
-	knockback.MouseButton1Click:Connect(function()
-		local args = split(textbox.Text," ")
-		local function knockback(plr,int1,int2)
-			local A_1 = game.Players[plr].Character.Humanoid
-			local A_2 = int1 -- speed
-			local A_3 = int2 -- time
-			local Event = game:GetService("ReplicatedStorage").Remotes.Knockback
-			Event:InvokeServer(A_1, A_2, A_3)
-		end
-		knockback(getplayer(args[1]), args[2], args[3])
-	end)
-	
-	reflectdamage.MouseButton1Click:Connect(function()
-		local target = getplayer(textbox.Text)
-		local function knockback(plr,int1,int2)
-			local A_1 = game.Players[plr].Character.Humanoid
-			local A_2 = int1 -- speed
-			local A_3 = int2 -- time
-			local Event = game:GetService("ReplicatedStorage").Remotes.Knockback
-			Event:InvokeServer(A_1, A_2, A_3)
-		end
-	
-		local function damage(plr)
-			local A_1 = game.Players[plr].Character.Humanoid
-			local A_2 = "spirit"
-			local tool = game.Players[plr].Character:FindFirstChildWhichIsA("Tool")
-			if tool then
-				if tool.Name == "Frozen Heart" then
-					A_2 = "frozen"
-				elseif tool.Name == "Neptas" or tool.Name == "Spirt Of Life" or tool.Name == "Bloody Heart" or tool.Name == "Flaming Katana" then
-					A_2 = "spirit"
-					if tool.Name == "Neptas" then
-						knockback(plr, 5234000,2342344)
-					elseif tool.Name == "Bloody Heart" then
-						knockback(plr, 100,0.2)
-					else
-						knockback(plr, 50,0.15)
-					end
-				elseif tool.Name:lower():match("katana") or tool.Name:lower():match("blade") or tool.Name:lower():match("katana") or tool.Name:lower():match("slimy") or tool.Name:lower():match("rainbow") or tool.Name:lower():match("oof") or tool.Name == "X" then
-					A_2 = "katana"
-				else
-					A_2 = "katana"
-					knockback(plr, 25,0.2)
-				end
-			else
-				A_2 = "punch"
-				knockback(plr, 25,0.2)
-			end
-			local Event = game:GetService("ReplicatedStorage").Remotes.Damage
-			Event:InvokeServer(A_1, A_2)
-		end
-		local lastname = ""
-		local used = false
-		game.Players[target].Character.Humanoid.ChildAdded:Connect(function(part)
-			if part.Name == "creator" and part:IsA("ObjectValue") and used == false then
-				used = true
-				damage(part.Value.Name)
-			end
-			game:GetService("RunService").Stepped:Wait()
-			used = false
-		end)
-	end)
-	
-	mute.MouseButton1Click:Connect(function()
-		local player = getplayer(textbox.Text)
-		while game:GetService"RunService".Stepped:Wait() do
-			if game.Players:FindFirstChild(player) then
-				local fluteie = game.Players[player].Character:FindFirstChild("Flute")
-				if fluteie then
-					fluteie = fluteie.Handle
-					local sound = fluteie:FindFirstChildWhichIsA("Sound")
-					if sound then
-						sound.Playing = false
-					end
-				end
-			end
-		end
-	end)
-	
-	autofarm.MouseButton1Click:Connect(function()
-		_G.slowgainchininjasimtaCO = not _G.slowgainchininjasimtaCO
-		local levelswanted = math.huge
-		local levelsgained = 0
-		local currentlevel = game.Players.LocalPlayer.leaderstats.Level.Value
-		local poopieheadermo = game.Players.LocalPlayer.leaderstats.Level.Changed:Connect(function()
-			if game.Players.LocalPlayer.leaderstats.Level.Value ~= currentlevel then
-				levelsgained = levelsgained + 1
-				currentlevel = game.Players.LocalPlayer.leaderstats.Level.Value
-				if levelsgained >= levelswanted then
-					_G.slowgainchininjasimtaCO = false
-				end
-			end
-		end)
-		local speed = 10
-		local function givechi()
-			for i = 1,speed do
-				if _G.slowgainchininjasimtaCO == true then
-					spawn(function()
-						pcall(function()
-							if _G.slowgainchininjasimtaCO == true and #game.Players:GetPlayers() < 3 then
-								local A_1 = game:GetService("Workspace")["先生"].Humanoid
-								local A_2 = "punch"
-								local Event = game:GetService("ReplicatedStorage").Remotes.Damage
-								Event:InvokeServer(A_1, A_2)
-							else
-								_G.slowgainchininjasimtaCO = false
-							end
-						end)
-					end)
-				end
-			end
-		end
-	
-		if _G.slowgainchininjasimtaCO == true then
-			while _G.slowgainchininjasimtaCO == true do
-				game:GetService("RunService").Stepped:Wait()
-				if _G.slowgainchininjasimtaCO == true then
-					givechi()
-					if _G.slowgainchininjasimtaCO == false then
-						poopieheadermo:Disconnect()
-						break
-					end
-				else
-					poopieheadermo:Disconnect()
-					break
-				end
-			end
-		end
-	end)
-end
-coroutine.wrap(LRXI_fake_script)()
-local function UJJFHQ_fake_script() -- MainFrame.Selector 
+local function NCPZCSU_fake_script() -- MainFrame.Selector 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	local mainframe = script.Parent
@@ -882,8 +722,8 @@ local function UJJFHQ_fake_script() -- MainFrame.Selector
 	end
 	dragify(mainframe)
 end
-coroutine.wrap(UJJFHQ_fake_script)()
-local function JDFNQMI_fake_script() -- DestructionSim.DestructSim 
+coroutine.wrap(NCPZCSU_fake_script)()
+local function HTGQ_fake_script() -- DestructionSim.DestructSim 
 	local script = Instance.new('LocalScript', DestructionSim)
 
 	local frame = script.Parent
@@ -954,8 +794,8 @@ local function JDFNQMI_fake_script() -- DestructionSim.DestructSim
 		bomb.BlastForce =  458309834905
 	end)
 end
-coroutine.wrap(JDFNQMI_fake_script)()
-local function IRZGBYX_fake_script() -- RagdollEngFrame.RagdollScript 
+coroutine.wrap(HTGQ_fake_script)()
+local function AJDT_fake_script() -- RagdollEngFrame.RagdollScript 
 	local script = Instance.new('LocalScript', RagdollEngFrame)
 
 	local frame = script.Parent
@@ -1057,8 +897,8 @@ local function IRZGBYX_fake_script() -- RagdollEngFrame.RagdollScript
 		end
 	end)
 end
-coroutine.wrap(IRZGBYX_fake_script)()
-local function GDPD_fake_script() -- MiscFrame.MiscScript 
+coroutine.wrap(AJDT_fake_script)()
+local function AADDP_fake_script() -- MiscFrame.MiscScript 
 	local script = Instance.new('LocalScript', MiscFrame)
 
 	local function split(text, splitter)
@@ -1365,4 +1205,313 @@ local function GDPD_fake_script() -- MiscFrame.MiscScript
 		setspeedfly(textbox.Text)
 	end)
 end
-coroutine.wrap(GDPD_fake_script)()
+coroutine.wrap(AADDP_fake_script)()
+local function GZAFWBJ_fake_script() -- NinjaSimFrame.NinjaFrameStuff 
+	local script = Instance.new('LocalScript', NinjaSimFrame)
+
+	local function split(text, splitter)
+		text = text..splitter
+		local returning = {}
+		local returningtxt = ""
+		for i = 1,#text do
+			if text:sub(i,i) ~= splitter and splitter ~= "" then
+				returningtxt = returningtxt..text:sub(i,i)
+			else
+				if splitter == "" then
+					returning[#returning+1] = text:sub(i,i)
+				else
+					returning[#returning+1] = returningtxt
+				end
+				returningtxt = ""
+			end
+		end
+		return returning
+	end
+	
+	local frame = script.Parent
+	local tab = script.Parent.Parent.NinjaSimulator
+	local antismoke = frame.AntiSmoke
+	local killbutton = frame.Kill
+	local knockback = frame.Knockback
+	local antiknock = frame.AntiKnockback
+	local BlockTools = frame.BlockTools
+	local reflectdamage = frame.ReflectDamage
+	local mute = frame.Mute
+	local autofarm = frame.AutoFarm
+	local modspeed = frame.ModSwordSpeed
+	local modair = frame.ModSwordTime
+	local modknock = frame.ModSwordKnockback
+	local crash = frame.Crash
+	local textbox = frame.Parent.TextBox
+	
+	local function getplayer(plr)
+		plr = tostring(plr):lower()
+		if plr == "me" or plr == "" then
+			return game.Players.LocalPlayer.Name
+		end
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Name:lower():match(plr) then
+				return v.Name
+			end
+		end
+	end
+	
+	
+	local antismokeclicked = false
+	antismoke.MouseButton1Click:Connect(function()
+		if antismokeclicked == false then
+			antismokeclicked = true
+			game.Players.LocalPlayer.PlayerGui.ChildAdded:Connect(function(thing)
+				game:GetService("RunService").Stepped:Wait()
+				if thing.Name == "SmokeScreen" then
+					thing:Destroy()
+				end
+			end)
+			antismoke.Text = "Used"
+		end
+	end)
+	
+	killbutton.MouseButton1Click:Connect(function()
+		local target = getplayer(textbox.Text)
+		function damage(plr)
+			if plr then
+				local A_1 = game.Players[plr].Character.Humanoid
+				local A_2 = "spirit"
+				local Event = game:GetService("ReplicatedStorage").Remotes.Damage
+				Event:InvokeServer(A_1, A_2)
+			end
+		end
+	
+		if target then
+			repeat
+				game:GetService("RunService").Stepped:Wait()
+				spawn(function()
+					pcall(function()
+						damage(target)
+					end)
+				end)
+			until not game.Players:FindFirstChild(target) or game.Players[target].Character.Humanoid.Health <= 0
+		end
+	end)
+	
+	antiknock.MouseButton1Click:Connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.ChildAdded:Connect(function(part)
+			game:GetService("RunService").Stepped:Wait()
+			if part:IsA("BodyVelocity") then
+				part:Destroy()
+			end
+		end)
+	end)
+	
+	BlockTools.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v:FindFirstChild"Handle" then
+				for i,l in pairs(v.Handle:GetChildren()) do
+					if l:IsA("SpecialMesh") or l:IsA("BlockMesh") or v:IsA("MeshPart") then
+						l:Destroy()
+					end
+				end
+			end
+		end
+	
+		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v:FindFirstChild"Handle" then
+				for i,l in pairs(v.Handle:GetChildren()) do
+					if l:IsA("SpecialMesh") or l:IsA("BlockMesh") or v:IsA("MeshPart") then
+						l:Destroy()
+					end
+				end
+			end
+		end
+	end)
+	
+	knockback.MouseButton1Click:Connect(function()
+		local args = split(textbox.Text," ")
+		local function knockback(plr,int1,int2)
+			local A_1 = game.Players[plr].Character.Humanoid
+			local A_2 = int1 -- speed
+			local A_3 = int2 -- time
+			local Event = game:GetService("ReplicatedStorage").Remotes.Knockback
+			Event:InvokeServer(A_1, A_2, A_3)
+		end
+		knockback(getplayer(args[1]), args[2], args[3])
+	end)
+	
+	reflectdamage.MouseButton1Click:Connect(function()
+		local target = getplayer(textbox.Text)
+		local function knockback(plr,int1,int2)
+			local A_1 = game.Players[plr].Character.Humanoid
+			local A_2 = int1 -- speed
+			local A_3 = int2 -- time
+			local Event = game:GetService("ReplicatedStorage").Remotes.Knockback
+			Event:InvokeServer(A_1, A_2, A_3)
+		end
+	
+		local function damage(plr)
+			local A_1 = game.Players[plr].Character.Humanoid
+			local A_2 = "spirit"
+			local tool = game.Players[plr].Character:FindFirstChildWhichIsA("Tool")
+			if tool then
+				if tool.Name == "Frozen Heart" then
+					A_2 = "frozen"
+				elseif tool.Name == "Neptas" or tool.Name == "Spirt Of Life" or tool.Name == "Bloody Heart" or tool.Name == "Flaming Katana" then
+					A_2 = "spirit"
+					if tool.Name == "Neptas" then
+						knockback(plr, 5234000,2342344)
+					elseif tool.Name == "Bloody Heart" then
+						knockback(plr, 100,0.2)
+					else
+						knockback(plr, 50,0.15)
+					end
+				elseif tool.Name:lower():match("katana") or tool.Name:lower():match("blade") or tool.Name:lower():match("katana") or tool.Name:lower():match("slimy") or tool.Name:lower():match("rainbow") or tool.Name:lower():match("oof") or tool.Name == "X" then
+					A_2 = "katana"
+				else
+					A_2 = "katana"
+					knockback(plr, 25,0.2)
+				end
+			else
+				A_2 = "punch"
+				knockback(plr, 25,0.2)
+			end
+			local Event = game:GetService("ReplicatedStorage").Remotes.Damage
+			Event:InvokeServer(A_1, A_2)
+		end
+		local lastname = ""
+		local used = false
+		game.Players[target].Character.Humanoid.ChildAdded:Connect(function(part)
+			if part.Name == "creator" and part:IsA("ObjectValue") and used == false then
+				used = true
+				damage(part.Value.Name)
+			end
+			game:GetService("RunService").Stepped:Wait()
+			used = false
+		end)
+	end)
+	
+	mute.MouseButton1Click:Connect(function()
+		local player = getplayer(textbox.Text)
+		while game:GetService"RunService".Stepped:Wait() do
+			if game.Players:FindFirstChild(player) then
+				local fluteie = game.Players[player].Character:FindFirstChild("Flute")
+				if fluteie then
+					fluteie = fluteie.Handle
+					local sound = fluteie:FindFirstChildWhichIsA("Sound")
+					if sound then
+						sound.Playing = false
+					end
+				end
+			end
+		end
+	end)
+	
+	autofarm.MouseButton1Click:Connect(function()
+		_G.slowgainchininjasimtaCO = not _G.slowgainchininjasimtaCO
+		local levelswanted = math.huge
+		local levelsgained = 0
+		local currentlevel = game.Players.LocalPlayer.leaderstats.Level.Value
+		local poopieheadermo = game.Players.LocalPlayer.leaderstats.Level.Changed:Connect(function()
+			if game.Players.LocalPlayer.leaderstats.Level.Value ~= currentlevel then
+				levelsgained = levelsgained + 1
+				currentlevel = game.Players.LocalPlayer.leaderstats.Level.Value
+				if levelsgained >= levelswanted then
+					_G.slowgainchininjasimtaCO = false
+				end
+			end
+		end)
+		local speed = 10
+		local function givechi()
+			for i = 1,speed do
+				if _G.slowgainchininjasimtaCO == true then
+					spawn(function()
+						pcall(function()
+							if _G.slowgainchininjasimtaCO == true and #game.Players:GetPlayers() < 3 then
+								local A_1 = game:GetService("Workspace")["先生"].Humanoid
+								local A_2 = "punch"
+								local Event = game:GetService("ReplicatedStorage").Remotes.Damage
+								Event:InvokeServer(A_1, A_2)
+							else
+								_G.slowgainchininjasimtaCO = false
+							end
+						end)
+					end)
+				end
+			end
+		end
+	
+		if _G.slowgainchininjasimtaCO == true then
+			while _G.slowgainchininjasimtaCO == true do
+				game:GetService("RunService").Stepped:Wait()
+				if _G.slowgainchininjasimtaCO == true then
+					givechi()
+					if _G.slowgainchininjasimtaCO == false then
+						poopieheadermo:Disconnect()
+						break
+					end
+				else
+					poopieheadermo:Disconnect()
+					break
+				end
+			end
+		end
+	end)
+	
+	modair.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v:FindFirstChild"Katana" then
+				v.Configuration.Air_Time.Value = tonumber(textbox.Text)
+			end
+		end
+	
+		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v:FindFirstChild"Katana" then
+				v.Configuration.Air_Time.Value = tonumber(textbox.Text)
+			end
+		end
+	end)
+	
+	modknock.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v:FindFirstChild"Katana" then
+				v.Configuration.Knock_Force.Value = tonumber(textbox.Text)
+			end
+		end
+	
+		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v:FindFirstChild"Katana" then
+				v.Configuration.Knock_Force.Value = tonumber(textbox.Text)
+			end
+		end
+	end)
+	
+	modspeed.MouseButton1Click:Connect(function()
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v:FindFirstChild"Katana" then
+				v.Configuration.Swing_Speed.Value = tonumber(textbox.Text)
+			end
+		end
+	
+		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v:FindFirstChild"Katana" then
+				v.Configuration.Swing_Speed.Value = tonumber(textbox.Text)
+			end
+		end
+	end)
+	
+	crash.MouseButton1Click:Connect(function()
+		local function fix()
+			spawn(function()
+				game:GetService("ReplicatedStorage").Remotes.FixChar:FireServer();
+			end)
+		end
+		for i = 1,20 do
+			spawn(function()
+				while game:GetService"RunService".Stepped:Wait() do
+					for i = 1,50 do
+						fix()
+					end
+				end
+			end)
+		end
+	end)
+end
+coroutine.wrap(GZAFWBJ_fake_script)()
