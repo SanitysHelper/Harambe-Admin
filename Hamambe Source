@@ -1001,11 +1001,18 @@ local function POCBTV_fake_script() -- RagdollEngFrame.RagdollScript
 			antirag.Text = "Anti ragdoll [off]"
 		end
 		if norag == true then
+			local harderpushman = game.Players.LocalPlayer.Character.HumanoidRootPart.ChildAdded:Connect(function(v)
+				if v:IsA("BodyForce") then
+					game:GetService("RunService").Stepped:Wait()
+					v:Destroy()
+				end
+			end)
 			while game:GetService"RunService".Stepped:Wait() and norag == true do
 				local bool_1 = false;
 				local Target = game:GetService("ReplicatedStorage").LocalRagdollEvent;
 				Target:Fire(bool_1);
 			end
+			harderpushman:Disconnect()
 		end
 	end)
 	
