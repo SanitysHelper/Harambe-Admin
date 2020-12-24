@@ -1312,10 +1312,10 @@ local function GZAFWBJ_fake_script() -- NinjaSimFrame.NinjaFrameStuff
 					end
 				end
 			end
-		end
+		end	
 	
 		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-			if v:FindFirstChild"Handle" then
+			if v:FindFirstChild"Handle" and v:IsA("Tool") then
 				for i,l in pairs(v.Handle:GetChildren()) do
 					if l:IsA("SpecialMesh") or l:IsA("BlockMesh") or v:IsA("MeshPart") then
 						l:Destroy()
@@ -1324,7 +1324,7 @@ local function GZAFWBJ_fake_script() -- NinjaSimFrame.NinjaFrameStuff
 			end
 		end
 	end)
-	
+		
 	knockback.MouseButton1Click:Connect(function()
 		local args = split(textbox.Text," ")
 		local function knockback(plr,int1,int2)
